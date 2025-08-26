@@ -3,7 +3,7 @@
 ## Sobre mim
 
 -  Explorando novas tecnologias e desenvolvendo soluções de software.
--  Estudando Ciência da Computação na Escola Superior Dom Helder Câmara.
+-  Estudando Ciência da Computação no Centro Univesitario Dom Helder Câmara.
 -  Aprendendo mais sobre Python, Java, e C.
 
 ## Minhas Skills
