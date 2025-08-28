@@ -31,4 +31,4 @@
 [![Gmail Badge](https://img.shields.io/badge/-pedro.hipolito1203@gmail.com-006bed?style=flat-square&logo=Gmail&logoColor=white&link=mailto:pedro.hipolito1203@gmail.com)](mailto:pedro.hipolito1203@gmail.com)
 
 
-[![card](https://github-readme-stats.vercel.app/api?username=vvdelii&theme=cobalt)](https://github.com/anuraghazra/github-readme-stats)
+[![card](https://github-readme-stats.vercel.app/api?username=hipolitopeedro&theme=cobalt)](https://github.com/anuraghazra/github-readme-stats)
