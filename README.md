@@ -2,7 +2,7 @@
 
 ## Sobre mim
 
--  Explorando novas tecnologias e desenvolvendo soluções de software.
+-  Aprendendo novas tecnologias e soluções de software.
 -  Estudando Ciência da Computação no Centro Univesitario Dom Helder Câmara.
 -  Aprendendo mais sobre Python, Java, e C.
 
