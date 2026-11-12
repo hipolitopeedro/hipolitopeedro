@@ -18,6 +18,7 @@
 - Pursuing a B.Sc. in **Computer Science** at **Dom Helder Câmara** (Belo Horizonte, Brazil).
 - Hands-on experience with **Windows Server**, **Active Directory (AD)**, **Linux**, **Computer Networks**, and **AWS Cloud (Amazon S3 & Cloud Backups)**.
 - Developing **infrastructure & backup automations** using **PowerShell**, **Bash**, **Python (Boto3)**, and **AWS CLI** to ensure data resilience, security, and operational efficiency.
+- Enthusiast of **automotive mechanics, turbocharged engines, and motorcycle trackdays**, applying telemetry and data analysis to motorsport.
 
 </td>
 <td width="50%" valign="top">
@@ -27,6 +28,7 @@
 - Estudante de **Ciência da Computação** na **Escola Superior Dom Helder Câmara** (BH - MG).
 - Atuação prática com **Windows Server**, **Active Directory (AD)**, **Linux**, **Redes** e **AWS Cloud (Amazon S3 & Rotinas de Backup Corporativo)**.
 - Desenvolvendo **automações de infraestrutura e backup** com **PowerShell**, **Bash**, **Python (Boto3)** e **AWS CLI** com foco em resiliência de dados, segurança e eficiência operacional.
+- Entusiasta de **mecânica automotiva, motores turbo e trackday de motos**, aplicando telemetria e análise de dados no automobilismo.
 
 </td>
 </tr>
@@ -71,6 +73,13 @@
 - **[ad-windows-sysadmin-toolkit](https://github.com/hipolitopeedro/ad-windows-sysadmin-toolkit)** — PowerShell scripts for Active Directory & Windows Server administration (inactive user audits, bulk user provisioning, password expiration reports, and server health checks).
 - **[linux-infra-automation](https://github.com/hipolitopeedro/linux-infra-automation)** — Bash automation toolkit for Linux servers (system health auditing, automated backup & rotation with SHA-256 verification, and service auto-healing watchdog).
 - **[network-diagnostics-suite](https://github.com/hipolitopeedro/network-diagnostics-suite)** — Python & PowerShell tools for network connectivity sweeps, TCP port checks (DNS, LDAP, Kerberos, SMB, HTTPS), and infrastructure troubleshooting.
+
+---
+
+## Motorsport & Mechanics Hobby Projects / Projetos Pessoais (Motos & Carros Turbo)
+
+- **[moto-trackday-telemetry-analyzer](https://github.com/hipolitopeedro/moto-trackday-telemetry-analyzer)** — Motorcycle Trackday telemetry analyzer & pit-lane setup calculator in Python: computes lap times, deltas, apex speeds, braking G-force, and lean angles from session logs, plus cold-to-hot tire pressure thermodynamics, suspension sag, and sprocket gearing top speed.
+- **[turbo-engine-boost-toolkit](https://github.com/hipolitopeedro/turbo-engine-boost-toolkit)** — Turbocharged engine sizing calculator & standalone ECU datalog safety auditor: calculates compressor Pressure Ratio, Mass Air Flow (`lb/min`), dynamic boost compression, and fuel injector sizing (Gasoline vs. Ethanol), and audits WOT logs for lean AFR/Lambda under boost, injector saturation, heat soak, and overboost.
 
 ---
 
