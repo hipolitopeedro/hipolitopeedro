@@ -2,8 +2,8 @@
 
 # Pedro Hipólito
 
-### IT Infrastructure & Automation | Computer Science Student
-### Infraestrutura de TI & Automação | Estudante de Ciência da Computação
+### IT Infrastructure, Cloud Computing & Automation | Computer Science Student
+### Infraestrutura de TI, Cloud & Automação | Estudante de Ciência da Computação
 
 ---
 
@@ -16,8 +16,8 @@
 ### English
 - **IT Infrastructure Intern** at **Atex do Brasil**.
 - Pursuing a B.Sc. in **Computer Science** at **Dom Helder Câmara** (Belo Horizonte, Brazil).
-- Hands-on experience with **Windows Server**, **Active Directory (AD)**, **Computer Networks**, and **Linux**.
-- Building **automation scripts** with **PowerShell**, **Bash**, and **Python** to streamline sysadmin workflows, diagnostics, and server administration.
+- Hands-on experience with **Windows Server**, **Active Directory (AD)**, **Linux**, **Computer Networks**, and **Cloud Computing (AWS)**.
+- Developing **infrastructure automation** and **Cloud/SysAdmin scripts** using **PowerShell**, **Bash**, **Python (Boto3)**, and **Infrastructure as Code (Terraform / CloudFormation)**.
 
 </td>
 <td width="50%" valign="top">
@@ -25,8 +25,8 @@
 ### Português
 - **Estagiário de Infraestrutura de TI** na **Atex do Brasil**.
 - Estudante de **Ciência da Computação** na **Escola Superior Dom Helder Câmara** (BH - MG).
-- Atuação prática com **Windows Server**, **Active Directory (AD)**, **Redes** e **Linux**.
-- Desenvolvendo **automações e scripts** em **PowerShell**, **Bash** e **Python** para otimizar rotinas de administração, diagnósticos e suporte de infraestrutura.
+- Atuação prática com **Windows Server**, **Active Directory (AD)**, **Linux**, **Redes** e **Cloud Computing (AWS)**.
+- Desenvolvendo **automações de infraestrutura** e scripts para **Cloud/SysAdmin** com **PowerShell**, **Bash**, **Python (Boto3)** e **Infraestrutura como Código (Terraform / CloudFormation)**.
 
 </td>
 </tr>
@@ -36,29 +36,22 @@
 
 ## Skills & Technologies / Tecnologias
 
-**Infrastructure, Systems & Networking / Infraestrutura, Sistemas e Redes**
+**Cloud & Infrastructure / Cloud, Sistemas e Redes**
 
+![AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Windows Server](https://img.shields.io/badge/Windows%20Server-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![Active Directory](https://img.shields.io/badge/Active%20Directory-00599C?style=for-the-badge&logo=microsoft&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Networking](https://img.shields.io/badge/Networking%20%26%20TCP%2FIP-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white)
 
-**Automation, Scripting & Programming / Automação e Linguagens**
+**Automation, IaC & Scripting / Automação e IaC**
 
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash%20%2F%20Shell-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-
-**Tools & IDEs / Ferramentas de Desenvolvimento**
-
-![Visual Studio Code](https://img.shields.io/badge/VS%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
-![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
-![Jupyter Notebook](https://img.shields.io/badge/Jupyter-FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
-![PyCharm](https://img.shields.io/badge/PyCharm-000000?style=for-the-badge&logo=pycharm&logoColor=white)
 
 ---
 
@@ -70,8 +63,10 @@
 
 ---
 
-## Featured Projects / Projetos de Infra & Automação
+## Featured Projects / Projetos de Cloud & Infraestrutura
 
+- **[aws-cloud-automation-boto3](https://github.com/hipolitopeedro/aws-cloud-automation-boto3)** — AWS Cloud administration, security auditing, and FinOps automation using Python (`boto3`) and AWS CLI (EBS snapshot lifecycle manager, S3 public access & encryption auditor, IAM credential age/MFA check, and unused resource inventory).
+- **[aws-vpc-infra-iac](https://github.com/hipolitopeedro/aws-vpc-infra-iac)** — Infrastructure as Code (IaC) templates using Terraform and AWS CloudFormation for provisioning a Multi-AZ VPC network architecture (public/private subnets, Internet/NAT Gateways, Route Tables, and hardened Security Groups).
 - **[ad-windows-sysadmin-toolkit](https://github.com/hipolitopeedro/ad-windows-sysadmin-toolkit)** — PowerShell scripts for Active Directory & Windows Server administration (inactive user audits, bulk user provisioning, password expiration reports, and server health checks).
 - **[linux-infra-automation](https://github.com/hipolitopeedro/linux-infra-automation)** — Bash automation toolkit for Linux servers (system health auditing, automated backup & rotation with SHA-256 verification, and service auto-healing watchdog).
 - **[network-diagnostics-suite](https://github.com/hipolitopeedro/network-diagnostics-suite)** — Python & PowerShell tools for network connectivity sweeps, TCP port checks (DNS, LDAP, Kerberos, SMB, HTTPS), and infrastructure troubleshooting.
