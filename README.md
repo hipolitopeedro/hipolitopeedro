@@ -24,7 +24,7 @@
 
 ### Português
 - **Estagiário de Infraestrutura de TI** na **Atex do Brasil**.
-- Estudante de **Ciência da Computação** na **Escola Superior Dom Helder Câmara** (BH - MG).
+- Estudante de **Ciência da Computação** no **Centro Universitário Dom Helder Câmara** (BH - MG).
 - Atuação prática com **Windows Server**, **Active Directory (AD)**, **Linux**, **Redes** e **AWS Cloud (Amazon S3 & Rotinas de Backup Corporativo)**.
 - Desenvolvendo **automações de infraestrutura e backup** com **PowerShell**, **Bash**, **Python (Boto3)** e **AWS CLI** com foco em resiliência de dados, segurança e eficiência operacional.
 
