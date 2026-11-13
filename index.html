@@ -1,223 +1,412 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Pedro Hipólito — IT Infrastructure, Cloud AWS, Security & AI VPS</title>
+  <title>Pedro Hipólito — IT Infrastructure, Cloud AWS & Systems (Aero Edition)</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ==========================================================================
+       FRUTIGER AERO & WINDOWS 7 AERO GLASS DESIGN SYSTEM
+       ========================================================================== */
     :root {
-      --bg-page: #070a10;
-      --bg-card: #0e131f;
-      --bg-card-hover: #131a2a;
-      --border-subtle: #1e293b;
-      --accent: #38bdf8;
+      --aero-glass-bg: linear-gradient(135deg, rgba(225, 243, 255, 0.58) 0%, rgba(175, 220, 250, 0.38) 50%, rgba(210, 240, 255, 0.52) 100%);
+      --aero-border-outer: rgba(255, 255, 255, 0.78);
+      --aero-border-inner: rgba(15, 58, 95, 0.42);
     }
+
     body {
-      background-color: var(--bg-page);
-      color: #e2e8f0;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-image: 
-        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.07), transparent 35%),
-        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 35%);
+      font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+      color: #0f2942;
+      overflow-x: hidden;
+      /* Authentic Frutiger Aero Sky / Aurora / Harmony Wallpaper */
+      background:
+        radial-gradient(ellipse 90% 55% at 18% 12%, rgba(120, 245, 215, 0.55) 0%, transparent 65%),
+        radial-gradient(ellipse 80% 60% at 85% 18%, rgba(56, 189, 248, 0.65) 0%, transparent 70%),
+        radial-gradient(ellipse 110% 65% at 50% 95%, rgba(34, 197, 94, 0.35) 0%, transparent 65%),
+        linear-gradient(180deg, #073b70 0%, #0d69b4 34%, #26a0da 68%, #7be3b5 100%);
+      background-attachment: fixed;
     }
-    .font-mono { font-family: 'JetBrains Mono', monospace; }
-    .glass-nav {
-      background: rgba(7, 10, 16, 0.82);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+
+    /* Subtle Aero Light Rays & Bubbles Overlay */
+    .aero-aurora-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(118deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.03) 22%, transparent 22.5%, transparent 48%, rgba(255,255,255,0.11) 48.5%, rgba(255,255,255,0.02) 64%, transparent 64.5%),
+        radial-gradient(circle at 12% 78%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.05) 5%, transparent 7%),
+        radial-gradient(circle at 88% 65%, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.04) 6%, transparent 8%),
+        radial-gradient(circle at 74% 25%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.03) 4%, transparent 6%);
     }
-    .eng-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 0.875rem;
-      transition: all 0.22s ease;
+
+    /* Windows 7 Aero Glass Window Frame */
+    .win7-window {
+      background: linear-gradient(160deg, rgba(215, 238, 255, 0.68) 0%, rgba(162, 212, 248, 0.45) 45%, rgba(198, 232, 255, 0.62) 100%);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border-radius: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow:
+        0 14px 36px rgba(4, 28, 56, 0.42),
+        0 0 0 1px rgba(10, 52, 92, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        inset 0 0 18px rgba(255, 255, 255, 0.35);
+      padding: 0 7px 7px 7px;
+      position: relative;
+      overflow: hidden;
     }
-    .eng-card:hover {
-      background-color: var(--bg-card-hover);
-      border-color: #334155;
+
+    /* Diagonal Glass Specular Reflection on Window Frame */
+    .win7-window::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -25%;
+      width: 65%;
+      height: 44px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+      transform: skewX(-28deg);
+      pointer-events: none;
+    }
+
+    /* Inner Client Content Area of a Windows 7 Window */
+    .win7-body {
+      background: linear-gradient(180deg, #f7fbff 0%, #eaf4fc 100%);
+      border: 1px solid rgba(88, 141, 186, 0.65);
+      border-radius: 5px;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    }
+
+    /* Windows 7 Title Bar Caption Buttons (_, □, X) */
+    .win7-controls {
+      display: inline-flex;
+      border: 1px solid rgba(35, 78, 120, 0.65);
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+      margin-top: -1px;
+    }
+    .win7-ctrl-btn {
+      width: 27px;
+      height: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #103050;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+      background: linear-gradient(180deg, rgba(248, 252, 255, 0.82) 0%, rgba(205, 228, 248, 0.72) 50%, rgba(168, 204, 236, 0.82) 51%, rgba(196, 224, 248, 0.85) 100%);
+      border-right: 1px solid rgba(55, 102, 148, 0.45);
+      user-select: none;
+    }
+    .win7-ctrl-btn:hover {
+      background: linear-gradient(180deg, #e5f6ff 0%, #9cd9ff 50%, #56b8f5 51%, #9ee2ff 100%);
+      box-shadow: 0 0 8px rgba(86, 184, 245, 0.8);
+    }
+    .win7-ctrl-close {
+      width: 42px;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(90, 0, 0, 0.85);
+      border-right: none;
+      background: linear-gradient(180deg, #f3a199 0%, #e06155 50%, #c12b1c 51%, #e45c4e 100%);
+    }
+    .win7-ctrl-close:hover {
+      background: linear-gradient(180deg, #ffb9b2 0%, #f56f62 50%, #d92614 51%, #ff7a6b 100%);
+      box-shadow: 0 0 12px rgba(255, 65, 50, 0.9);
+    }
+
+    /* Windows Explorer Address / Breadcrumb Bar */
+    .win7-address-bar {
+      background: linear-gradient(180deg, #ffffff 0%, #f2f8fd 100%);
+      border: 1px solid #7da2ce;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    /* Authentic Frutiger Aero Glossy Gel Button (Split Horizon Highlight) */
+    .aero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #0e2e4f;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+      border: 1px solid #5989b5;
+      background: linear-gradient(180deg, #f7fbff 0%, #d8eefb 49%, #bce0f7 50%, #e1f3fd 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 1px 2px rgba(12, 48, 84, 0.15);
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .aero-btn:hover {
+      border-color: #2b82c9;
+      background: linear-gradient(180deg, #ffffff 0%, #cceeff 49%, #9cd8fb 50%, #d8f3ff 100%);
+      box-shadow: inset 0 1px 0 #ffffff, 0 0 9px rgba(56, 189, 248, 0.65);
+    }
+    .aero-btn-primary {
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(6, 45, 78, 0.8);
+      border: 1px solid #0c589c;
+      background: linear-gradient(180deg, #6ec8ff 0%, #2492e6 49%, #0d74c9 50%, #37a5f5 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 2px 5px rgba(9, 55, 102, 0.35);
+    }
+    .aero-btn-primary:hover {
+      background: linear-gradient(180deg, #8fd6ff 0%, #38a3f5 49%, #1484e0 50%, #56b8ff 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 12px rgba(36, 146, 230, 0.75);
+    }
+    .aero-btn-green {
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(8, 65, 28, 0.85);
+      border: 1px solid #167a3a;
+      background: linear-gradient(180deg, #74e89a 0%, #29b858 49%, #189943 50%, #3ecf6c 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 2px 5px rgba(12, 72, 34, 0.3);
+    }
+    .aero-btn-green:hover {
+      background: linear-gradient(180deg, #92f2b1 0%, #39c968 49%, #20ad4f 50%, #58de83 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 0 12px rgba(41, 184, 88, 0.75);
+    }
+
+    /* Inner Aero Card (Command Link / Control Panel Tile Style) */
+    .aero-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f1f8fe 100%);
+      border: 1px solid #b6d4f0;
+      border-radius: 7px;
+      box-shadow: 0 2px 6px rgba(15, 58, 95, 0.08), inset 0 1px 0 #ffffff;
+      transition: all 0.18s ease;
+    }
+    .aero-card:hover {
+      background: linear-gradient(180deg, #ffffff 0%, #e4f3ff 100%);
+      border-color: #53a8ea;
+      box-shadow: 0 4px 14px rgba(33, 133, 213, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
       transform: translateY(-2px);
     }
-    .grid-bg {
-      background-size: 32px 32px;
-      background-image: 
-        linear-gradient(to right, rgba(30, 41, 59, 0.22) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(30, 41, 59, 0.22) 1px, transparent 1px);
+
+    /* Windows 7 Glossy Green Progress Bar with Animated Light Pulse */
+    .win7-progress-track {
+      height: 15px;
+      background: linear-gradient(180deg, #d5dfe8 0%, #eef3f7 45%, #ffffff 100%);
+      border: 1px solid #8e9cac;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+      position: relative;
     }
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+    .win7-progress-fill {
+      height: 100%;
+      background: linear-gradient(180deg, #b5f7c6 0%, #44d468 48%, #15b33d 50%, #5ce87e 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      position: relative;
+      overflow: hidden;
     }
-    .status-dot { animation: pulseGlow 2.2s infinite; }
+    .win7-progress-fill::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 35%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+      animation: win7Shimmer 2.4s infinite linear;
+    }
+    @keyframes win7Shimmer {
+      0% { left: -40%; }
+      100% { left: 120%; }
+    }
+
+    /* Windows 7 Superbar (Bottom Taskbar) */
+    .win7-taskbar {
+      background: linear-gradient(180deg, rgba(28, 68, 108, 0.78) 0%, rgba(12, 34, 60, 0.88) 50%, rgba(6, 22, 42, 0.94) 51%, rgba(15, 44, 76, 0.92) 100%);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-top: 1px solid rgba(168, 220, 255, 0.65);
+      box-shadow: 0 -4px 20px rgba(0, 15, 35, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    /* Windows 7 Start Orb */
+    .win7-orb {
+      width: 42px;
+      height: 42px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 50% 25%, #b5f4ff 0%, #1ea2f0 38%, #074684 72%, #19b87a 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.85), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .win7-orb:hover {
+      box-shadow: 0 0 20px rgba(110, 231, 183, 1), inset 0 2px 6px #ffffff;
+      transform: scale(1.06);
+    }
+
+    .win7-task-item {
+      background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.14) 100%);
+      border: 1px solid rgba(255,255,255,0.32);
+      border-radius: 5px;
+      color: #f0f9ff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.75);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+      transition: all 0.15s ease;
+    }
+    .win7-task-item:hover {
+      background: linear-gradient(180deg, rgba(135, 215, 255, 0.42) 0%, rgba(56, 165, 235, 0.25) 50%, rgba(95, 195, 255, 0.38) 100%);
+      border-color: rgba(190, 235, 255, 0.75);
+      box-shadow: 0 0 10px rgba(86, 195, 255, 0.5);
+    }
   </style>
 </head>
-<body class="min-h-screen antialiased selection:bg-sky-500/30 selection:text-sky-200">
+<body class="min-h-screen pb-24 relative">
+  <!-- Frutiger Aero Light Rays & Bubbles -->
+  <div class="aero-aurora-bg"></div>
 
-  <!-- Sticky Navigation -->
-  <header class="glass-nav sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5 group">
-        <span class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center font-mono font-bold text-sky-400 text-sm group-hover:bg-sky-500/20 transition">
-          PH
-        </span>
-        <span class="font-mono text-xs text-slate-400 hidden sm:inline">~/pedro-hipolito</span>
-      </a>
+  <main class="max-w-6xl mx-auto px-3 sm:px-5 pt-5 space-y-6 relative z-10">
 
-      <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-slate-300">
-        <a href="#about" class="hover:text-sky-400 transition" data-i18n="nav_about">01 / Sobre</a>
-        <a href="#experience" class="hover:text-sky-400 transition" data-i18n="nav_exp">02 / Trajetória</a>
-        <a href="#projects" class="hover:text-sky-400 transition" data-i18n="nav_proj">03 / Projetos & Labs</a>
-        <a href="#stack" class="hover:text-sky-400 transition" data-i18n="nav_stack">04 / Tecnologias</a>
-        <a href="#contact" class="hover:text-sky-400 transition" data-i18n="nav_contact">05 / Contato</a>
-      </nav>
-
-      <!-- Language Switcher PT / EN / FR -->
-      <div class="flex items-center gap-1.5 bg-slate-900/90 p-1 rounded-lg border border-slate-800 font-mono text-xs">
-        <button onclick="setLang('pt')" id="lang-pt" class="px-2.5 py-1 rounded bg-sky-500 text-slate-950 font-bold transition">PT</button>
-        <button onclick="setLang('en')" id="lang-en" class="px-2.5 py-1 rounded text-slate-400 hover:text-white transition">EN</button>
-        <button onclick="setLang('fr')" id="lang-fr" class="px-2.5 py-1 rounded text-slate-400 hover:text-white transition">FR</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="max-w-6xl mx-auto px-5 pb-24">
-    <!-- HERO SECTION -->
-    <section class="py-14 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-      <div class="lg:col-span-7 space-y-6">
-        <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 status-dot"></span>
-          <span data-i18n="hero_badge">BELO HORIZONTE, BRASIL • CLOUD AWS, SECURITY &amp; AI VPS</span>
+    <!-- ======================================================================
+         WINDOW 1: MAIN EXPLORER / SYSTEM PROPERTIES WINDOW (HERO + TELEMETRY)
+         ====================================================================== -->
+    <section class="win7-window">
+      <!-- Title Bar -->
+      <div class="flex items-center justify-between px-2 pb-1.5 pt-1">
+        <div class="flex items-center gap-2">
+          <!-- Glossy Computer / Cloud Sphere Icon -->
+          <span class="w-4 h-4 rounded-full bg-gradient-to-b from-cyan-200 via-sky-500 to-blue-800 border border-white shadow-sm inline-block"></span>
+          <span class="text-xs font-semibold text-slate-900 drop-shadow-[0_0_6px_rgba(255,255,255,0.95)]" data-i18n="win1_title">
+            Painel de Controle de Infraestrutura — Pedro Hipólito (Atex do Brasil &amp; AWS Cloud)
+          </span>
         </div>
-
-        <div class="space-y-2">
-          <p class="font-mono text-xs text-sky-400 tracking-wider uppercase">~/PEDRO-HIPOLITO / CLOUD-INFRA + SECURITY + AI-VPS</p>
-          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Pedro Hipólito<span class="text-sky-400">.</span>
-          </h1>
-          <p class="text-xl sm:text-2xl font-semibold text-slate-300" data-i18n="hero_subtitle">
-            Infraestrutura de TI, Cloud AWS, Segurança de Rede &amp; VPS para IA.
-          </p>
-        </div>
-
-        <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl" data-i18n="hero_desc">
-          Atuo na operação e automação de infraestrutura corporativa na Atex do Brasil: armazenamento e backups no Amazon S3 (AWS), provisionamento de infraestrutura para IA em VPS dedicadas por usuário com Docker, ambientes PHP, gestão de segurança endpoint Kaspersky, Firewall S4 e servidores Windows Server (incluindo ambientes legados 2008) e Linux.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-3 pt-2">
-          <a href="#projects" class="px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition shadow-lg shadow-sky-500/10" data-i18n="btn_explore">
-            Explorar Projetos &amp; Simuladores ↓
-          </a>
-          <a href="https://github.com/hipolitopeedro" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs transition">
-            GitHub (@hipolitopeedro) ↗
-          </a>
-          <a href="https://www.linkedin.com/in/hipolitopeedro/" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs transition">
-            LinkedIn ↗
-          </a>
+        <div class="win7-controls">
+          <span class="win7-ctrl-btn" title="Minimizar">_</span>
+          <span class="win7-ctrl-btn" title="Maximizar">□</span>
+          <span class="win7-ctrl-btn win7-ctrl-close" title="Fechar">✕</span>
         </div>
       </div>
 
-      <!-- Interactive Live Infrastructure Telemetry Widget -->
-      <div class="lg:col-span-5">
-        <div class="eng-card p-5 grid-bg relative overflow-hidden">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-              <span class="font-mono text-[11px] text-slate-400 ml-2">atex-infra-ops-monitor.sh</span>
-            </div>
-            <span class="px-2 py-0.5 text-[10px] font-mono rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">OPERATIONAL</span>
+      <!-- Explorer Address Bar & Language Selector -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mb-2 px-1">
+        <div class="win7-address-bar flex-1 px-3 py-1 flex items-center justify-between text-xs text-slate-700">
+          <div class="flex items-center gap-1.5 truncate">
+            <span class="text-sky-600 font-bold">▸</span>
+            <span class="font-medium text-slate-600" data-i18n="addr_root">Computador</span>
+            <span class="text-slate-400">▸</span>
+            <span class="font-semibold text-sky-800">Pedro Hipólito</span>
+            <span class="text-slate-400">▸</span>
+            <span class="text-emerald-700 font-semibold" data-i18n="addr_leaf">Cloud AWS, Segurança &amp; VPS para IA</span>
           </div>
+          <span class="text-[11px] text-slate-400 font-mono hidden md:inline">C:\Users\PedroHipolito\Portfolio</span>
+        </div>
 
-          <div class="space-y-3 font-mono text-xs">
-            <div class="p-3 rounded-lg bg-slate-950/90 border border-slate-800/90">
-              <div class="flex justify-between text-slate-400 text-[11px]">
-                <span>AWS S3 &amp; PER-USER AI VPS FLEET</span>
-                <span class="text-emerald-400">DOCKER + S3 OK</span>
-              </div>
-              <div class="mt-1.5 flex items-center justify-between">
-                <span class="text-slate-200 font-semibold">AI VPS Nodes + S3 Glacier</span>
-                <span class="text-sky-400">Isolated Containers</span>
-              </div>
-              <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
-                <div class="bg-emerald-400 h-full rounded-full" style="width: 96%"></div>
-              </div>
+        <!-- Glossy Language Switcher (PT | EN | FR) -->
+        <div class="flex items-center gap-1 bg-white/75 px-2 py-1 rounded border border-[#7da2ce] shadow-sm">
+          <span class="text-[11px] font-semibold text-slate-600 mr-1">🌐 Idioma:</span>
+          <button onclick="setLang('pt')" id="lang-pt" class="aero-btn aero-btn-primary !px-2.5 !py-0.5 !text-xs">PT-BR</button>
+          <button onclick="setLang('en')" id="lang-en" class="aero-btn !px-2.5 !py-0.5 !text-xs">EN</button>
+          <button onclick="setLang('fr')" id="lang-fr" class="aero-btn !px-2.5 !py-0.5 !text-xs">FR</button>
+        </div>
+      </div>
+
+      <!-- Inner Client Area -->
+      <div class="win7-body p-5 sm:p-7">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+          <!-- Left: Profile & Summary -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-b from-white to-sky-100 border border-sky-300 text-xs font-semibold text-sky-900 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-b from-emerald-300 to-emerald-600 border border-white shadow"></span>
+              <span data-i18n="hero_badge">BELO HORIZONTE, MG • INFRAESTRUTURA DE TI, CLOUD AWS &amp; SEGURANÇA</span>
             </div>
 
-            <div class="p-3 rounded-lg bg-slate-950/90 border border-slate-800/90">
-              <div class="flex justify-between text-slate-400 text-[11px]">
-                <span>SECURITY &amp; HYBRID SERVERS</span>
-                <span class="text-sky-400">ACTIVE</span>
-              </div>
-              <div class="grid grid-cols-3 gap-2 mt-2 text-[11px]">
-                <div class="bg-slate-900 px-2 py-1.5 rounded border border-slate-800 text-center">
-                  <span class="text-slate-400 block">Firewall S4</span>
-                  <span class="text-emerald-400 font-bold">PROTECTED</span>
-                </div>
-                <div class="bg-slate-900 px-2 py-1.5 rounded border border-slate-800 text-center">
-                  <span class="text-slate-400 block">Kaspersky</span>
-                  <span class="text-emerald-400 font-bold">EDR SYNC</span>
-                </div>
-                <div class="bg-slate-900 px-2 py-1.5 rounded border border-slate-800 text-center">
-                  <span class="text-slate-400 block">WinSrv 2008</span>
-                  <span class="text-amber-400 font-bold">HARDENED</span>
+            <div class="flex items-center gap-4">
+              <!-- Windows 7 User Frame Avatar Badge -->
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl p-1 bg-gradient-to-b from-white/90 via-sky-200/70 to-sky-400/70 border border-white shadow-md shrink-0 flex items-center justify-center">
+                <div class="w-full h-full rounded-lg bg-gradient-to-br from-sky-500 via-blue-600 to-emerald-500 flex items-center justify-center text-white font-extrabold text-2xl sm:text-3xl shadow-inner border border-white/60">
+                  PH
                 </div>
               </div>
-            </div>
-
-            <div class="p-3 rounded-lg bg-slate-950/90 border border-slate-800/90 flex items-center justify-between">
               <div>
-                <span class="text-[11px] text-slate-400 block">INTERACTIVE DEMOS HOSTED</span>
-                <span class="text-slate-200 font-bold">8 Live Web Simulators &amp; MVPs</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-[#0b2e59] tracking-tight">
+                  Pedro Hipólito
+                </h1>
+                <p class="text-sm sm:text-base font-semibold text-[#1565c0]" data-i18n="hero_subtitle">
+                  Infraestrutura de TI, Cloud AWS, Segurança de Rede &amp; VPS para IA
+                </p>
+                <p class="text-xs text-slate-600 mt-0.5">
+                  Atex do Brasil • Ciência da Computação (Dom Helder Câmara)
+                </p>
               </div>
-              <a href="#projects" class="px-2.5 py-1.5 rounded bg-sky-500/15 text-sky-400 border border-sky-500/30 hover:bg-sky-500/25 transition text-[11px]">
-                Launch →
+            </div>
+
+            <p class="text-sm text-slate-700 leading-relaxed" data-i18n="hero_desc">
+              Atuo na operação e automação de infraestrutura corporativa na Atex do Brasil: armazenamento e rotinas de backup no Amazon S3 (AWS), provisionamento de infraestrutura para IA em VPS dedicadas por usuário com Docker, ambientes PHP, gestão de segurança endpoint Kaspersky em toda a rede, Firewall S4 e servidores Windows Server (incluindo ambientes legados 2008) e Linux.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-2.5 pt-1">
+              <a href="#projects" class="aero-btn aero-btn-primary" data-i18n="btn_explore">
+                📂 Explorar Projetos &amp; Simuladores (15)
+              </a>
+              <a href="https://github.com/hipolitopeedro" target="_blank" class="aero-btn">
+                💻 GitHub (@hipolitopeedro) ↗
+              </a>
+              <a href="https://www.linkedin.com/in/hipolitopeedro/" target="_blank" class="aero-btn">
+                🔗 LinkedIn ↗
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- 01 / ABOUT ME -->
-    <section id="about" class="py-12 border-t border-slate-800/80">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_about_num">01 / SOBRE MIM</span>
-        <div class="h-px bg-slate-800 flex-1"></div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div class="lg:col-span-7 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
-          <p data-i18n="about_p1">
-            Sou estudante de Ciência da Computação na Escola Superior Dom Helder Câmara (Belo Horizonte - MG) e atuo na área de Infraestrutura de TI e Cloud na Atex do Brasil. Trabalho mantendo ambientes híbridos, redes corporativas e servidores em operação contínua e segura.
-          </p>
-          <p data-i18n="about_p2">
-            No dia a dia na Atex, administro rotinas na AWS (especialmente backups corporativos no Amazon S3), infraestrutura dedicada para IA em VPS isoladas por usuário rodando em Docker, aplicações e ambientes em PHP, além de toda a malha de segurança endpoint Kaspersky, regras de Firewall S4 e sustentação/blindagem de Windows Server 2008 e Active Directory.
-          </p>
-          <p data-i18n="about_p3">
-            Fora do trabalho, gosto de explorar engenharia de hardware a fundo — desde arquitetura e telemetria de processadores/VRM até montagem de servidores domésticos (Homelab), sistemas embarcados em C/C++ e análise de telemetria física.
-          </p>
-        </div>
-
-        <div class="lg:col-span-5 space-y-3">
-          <div class="eng-card p-5 space-y-3">
-            <h3 class="font-mono text-xs uppercase tracking-wider text-sky-400" data-i18n="lang_title">Idiomas &amp; Comunicação</h3>
-            <div class="space-y-2.5 text-sm">
-              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
-                <span class="font-medium text-white">Português</span>
-                <span class="font-mono text-xs px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400" data-i18n="lang_pt">Nativo</span>
+          <!-- Right: Windows 7 Resource Monitor / Server Status Gadget -->
+          <div class="lg:col-span-5">
+            <div class="aero-card p-4 space-y-3 bg-gradient-to-b from-[#f8fcff] to-[#e3f2fd] border-[#8ab8e6]">
+              <div class="flex items-center justify-between border-b border-sky-200 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-gradient-to-b from-lime-300 to-green-600 border border-white shadow"></span>
+                  <span class="text-xs font-bold text-[#0b355e]" data-i18n="gadget_title">Monitor de Recursos e Segurança (Atex &amp; Labs)</span>
+                </div>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span>
               </div>
-              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
-                <span class="font-medium text-white">English</span>
-                <span class="font-mono text-xs px-2 py-0.5 rounded bg-sky-500/15 text-sky-400" data-i18n="lang_en">Fluente / Avançado</span>
+
+              <!-- Progress Bar 1 -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span class="font-semibold text-slate-700">Amazon S3 Backups &amp; Glacier SLA</span>
+                  <span class="font-mono font-bold text-emerald-700">100% Íntegro (SHA-256)</span>
+                </div>
+                <div class="win7-progress-track">
+                  <div class="win7-progress-fill" style="width: 96%"></div>
+                </div>
               </div>
-              <div class="flex items-center justify-between">
-                <span class="font-medium text-white">Français</span>
-                <span class="font-mono text-xs px-2 py-0.5 rounded bg-purple-500/15 text-purple-300" data-i18n="lang_fr">Em aprendizado (Projeto Imersão Lyon)</span>
+
+              <!-- Progress Bar 2 -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span class="font-semibold text-slate-700">Infra VPS para IA (Docker por Usuário)</span>
+                  <span class="font-mono font-bold text-sky-800">Containers Isolados</span>
+                </div>
+                <div class="win7-progress-track">
+                  <div class="win7-progress-fill" style="width: 88%"></div>
+                </div>
+              </div>
+
+              <!-- Progress Bar 3 -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span class="font-semibold text-slate-700">Kaspersky Endpoint + Firewall S4 + WinSrv 2008</span>
+                  <span class="font-mono font-bold text-emerald-700">Proteção Ativa</span>
+                </div>
+                <div class="win7-progress-track">
+                  <div class="win7-progress-fill" style="width: 94%"></div>
+                </div>
+              </div>
+
+              <div class="pt-1 flex items-center justify-between text-xs border-t border-sky-200/80">
+                <span class="text-slate-600 font-medium" data-i18n="gadget_footer">8 Simuladores Web Interativos hospedados</span>
+                <a href="#projects" class="aero-btn aero-btn-green !py-1 !px-2.5 !text-xs">Abrir Labs →</a>
               </div>
             </div>
           </div>
@@ -225,295 +414,444 @@
       </div>
     </section>
 
-    <!-- 02 / EXPERIENCE & EDUCATION -->
-    <section id="experience" class="py-12 border-t border-slate-800/80">
-      <div class="flex items-center gap-3 mb-8">
-        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_exp_num">02 / EXPERIÊNCIA &amp; FORMAÇÃO</span>
-        <div class="h-px bg-slate-800 flex-1"></div>
+    <!-- ======================================================================
+         WINDOW 2: ABOUT ME & EXPERIENCE / EDUCATION (CONTROL PANEL STYLE)
+         ====================================================================== -->
+    <section id="about" class="win7-window">
+      <div class="flex items-center justify-between px-2 pb-1.5 pt-1">
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-full bg-gradient-to-b from-emerald-200 via-emerald-500 to-teal-800 border border-white shadow-sm inline-block"></span>
+          <span class="text-xs font-semibold text-slate-900 drop-shadow-[0_0_6px_rgba(255,255,255,0.95)]" data-i18n="win2_title">
+            Informações do Sistema e Trajetória Profissional — Sobre Mim &amp; Experiência
+          </span>
+        </div>
+        <div class="win7-controls">
+          <span class="win7-ctrl-btn">_</span>
+          <span class="win7-ctrl-btn">□</span>
+          <span class="win7-ctrl-btn win7-ctrl-close">✕</span>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Work Experience Timeline -->
-        <div class="space-y-5">
-          <!-- Atex do Brasil -->
-          <div class="eng-card p-6 space-y-4">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <span class="font-mono text-xs text-emerald-400 uppercase" data-i18n="exp_badge">Experiência Atual</span>
-                <h3 class="text-lg font-bold text-white mt-0.5" data-i18n="exp_role">Infraestrutura de TI, Cloud &amp; Segurança (Estágio)</h3>
-                <p class="text-sm font-medium text-sky-400">Atex do Brasil</p>
+      <div id="experience" class="win7-body p-5 sm:p-7 space-y-6">
+        <!-- About + Languages Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-8 space-y-3 text-sm text-slate-700 leading-relaxed">
+            <h2 class="text-base font-bold text-[#0b355e] border-b border-sky-200 pb-1.5" data-i18n="sec_about_num">
+              01 / Sobre Mim &amp; Atuação Técnica
+            </h2>
+            <p data-i18n="about_p1">
+              Sou estudante de Ciência da Computação na Escola Superior Dom Helder Câmara (Belo Horizonte - MG) e atuo na área de Infraestrutura de TI e Cloud na Atex do Brasil. Trabalho mantendo ambientes híbridos, redes corporativas e servidores em operação contínua e segura.
+            </p>
+            <p data-i18n="about_p2">
+              No dia a dia na Atex, administro rotinas na AWS (especialmente backups corporativos no Amazon S3), infraestrutura dedicada para IA em VPS isoladas por usuário rodando em Docker, aplicações e ambientes em PHP, além de toda a malha de segurança endpoint Kaspersky, regras de Firewall S4 e sustentação/blindagem de Windows Server 2008 e Active Directory.
+            </p>
+            <p data-i18n="about_p3">
+              Fora do trabalho, gosto de explorar engenharia de hardware a fundo — desde arquitetura e telemetria de processadores/VRM até montagem de servidores domésticos (Homelab), sistemas embarcados em C/C++ e análise de telemetria física.
+            </p>
+          </div>
+
+          <div class="lg:col-span-4">
+            <div class="aero-card p-4 space-y-2.5 h-full">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-[#1565c0] border-b border-sky-200 pb-1.5" data-i18n="lang_title">
+                🌐 Idiomas &amp; Imersão
+              </h3>
+              <div class="space-y-2 text-xs">
+                <div class="flex items-center justify-between py-1 border-b border-slate-200">
+                  <span class="font-bold text-slate-800">Português</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold border border-emerald-300" data-i18n="lang_pt">Nativo</span>
+                </div>
+                <div class="flex items-center justify-between py-1 border-b border-slate-200">
+                  <span class="font-bold text-slate-800">English</span>
+                  <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-semibold border border-sky-300" data-i18n="lang_en">Fluente / Avançado</span>
+                </div>
+                <div class="flex items-center justify-between py-1">
+                  <span class="font-bold text-slate-800">Français</span>
+                  <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 font-semibold border border-indigo-300" data-i18n="lang_fr">Em aprendizado (Lyon)</span>
+                </div>
               </div>
-              <span class="font-mono text-xs px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-300" data-i18n="exp_date">Presente</span>
             </div>
-            <ul class="space-y-2 text-sm text-slate-300 list-disc list-inside leading-relaxed">
-              <li data-i18n="exp_b1">AWS Cloud &amp; Backups: Gerenciamento e automação de rotinas de backup corporativo no Amazon S3 com retenção, segurança e verificação de integridade.</li>
-              <li data-i18n="exp_b2">Infraestrutura de IA &amp; Containers: Provisionamento e manutenção de VPS dedicadas por usuário para cargas de Inteligência Artificial utilizando Docker e ambientes PHP.</li>
-              <li data-i18n="exp_b3">Segurança de Rede &amp; Servidores: Administração de toda a malha de segurança Kaspersky na rede, gerência do Firewall S4 e sustentação/hardening de Windows Server 2008 e Active Directory.</li>
-            </ul>
           </div>
+        </div>
 
-          <!-- Brazilian Army -->
-          <div class="eng-card p-6 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <span class="font-mono text-xs text-slate-400 uppercase" data-i18n="exp2_badge">Experiência Anterior</span>
-                <h3 class="text-base font-bold text-white mt-0.5" data-i18n="exp2_role">Soldado de Infantaria &amp; Auxiliar de TI (N1 / N2)</h3>
-                <p class="text-sm font-medium text-sky-400" data-i18n="exp2_org">Exército Brasileiro</p>
+        <!-- Experience & Education Cards -->
+        <div class="pt-2">
+          <h2 class="text-base font-bold text-[#0b355e] border-b border-sky-200 pb-1.5 mb-4" data-i18n="sec_exp_num">
+            02 / Experiência Profissional &amp; Formação Acadêmica
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Atex do Brasil -->
+            <div class="aero-card p-4 space-y-2.5">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <span class="text-[11px] font-bold uppercase text-emerald-700" data-i18n="exp_badge">Experiência Atual</span>
+                  <h3 class="text-sm font-bold text-[#0b2e59]" data-i18n="exp_role">Infraestrutura de TI, Cloud &amp; Segurança</h3>
+                  <p class="text-xs font-semibold text-[#1565c0]">Atex do Brasil</p>
+                </div>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300" data-i18n="exp_date">Presente</span>
               </div>
-              <span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400" data-i18n="exp2_date">Concluído</span>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc list-inside leading-relaxed">
+                <li data-i18n="exp_b1">AWS Cloud &amp; Backups corporativos no Amazon S3 com retenção e verificação de integridade.</li>
+                <li data-i18n="exp_b2">Infraestrutura para IA em VPS dedicadas por usuário utilizando Docker e ambientes PHP.</li>
+                <li data-i18n="exp_b3">Rede de segurança Kaspersky, Firewall S4 e sustentação/blindagem de Windows Server 2008 e AD.</li>
+              </ul>
             </div>
-            <ul class="space-y-1.5 text-sm text-slate-300 list-disc list-inside leading-relaxed">
-              <li data-i18n="exp2_b1">Atuação no suporte técnico de TI Nível 1 (N1) com escalonamento e resolução de chamados Nível 2 (N2).</li>
-              <li data-i18n="exp2_b2">Manutenção de hardware e estações de trabalho, configuração de rede local e apoio à infraestrutura interna sob alto padrão de disciplina operacional.</li>
-            </ul>
-          </div>
-        </div>
 
-        <!-- Academic Education -->
-        <div class="eng-card p-6 space-y-4 h-fit">
-          <div class="flex items-start justify-between gap-2">
-            <div>
-              <span class="font-mono text-xs text-purple-400 uppercase" data-i18n="edu_badge">Formação Acadêmica</span>
-              <h3 class="text-lg font-bold text-white mt-0.5" data-i18n="edu_degree">Bacharelado em Ciência da Computação</h3>
-              <p class="text-sm font-medium text-sky-400">Escola Superior Dom Helder Câmara (BH - MG)</p>
+            <!-- Exército Brasileiro -->
+            <div class="aero-card p-4 space-y-2.5">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <span class="text-[11px] font-bold uppercase text-slate-500" data-i18n="exp2_badge">Experiência Anterior</span>
+                  <h3 class="text-sm font-bold text-[#0b2e59]" data-i18n="exp2_role">Soldado de Infantaria &amp; Auxiliar de TI (N1/N2)</h3>
+                  <p class="text-xs font-semibold text-[#1565c0]" data-i18n="exp2_org">Exército Brasileiro</p>
+                </div>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-300" data-i18n="exp2_date">Concluído</span>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc list-inside leading-relaxed">
+                <li data-i18n="exp2_b1">Suporte técnico de TI Nível 1 (N1) com escalonamento e atuação em chamados Nível 2 (N2).</li>
+                <li data-i18n="exp2_b2">Manutenção de hardware e estações de trabalho, configuração de rede local e apoio operacional sob alto padrão de disciplina.</li>
+              </ul>
             </div>
-            <span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300" data-i18n="edu_date">Em andamento</span>
-          </div>
-          <ul class="space-y-2 text-sm text-slate-300 list-disc list-inside leading-relaxed">
-            <li data-i18n="edu_b1">Foco em Arquitetura de Computadores, Redes de Computadores, Sistemas Operacionais, Segurança da Informação e Sistemas Embarcados.</li>
-            <li data-i18n="edu_b2">Desenvolvimento de projetos práticos integrando software full-stack (LuPA Financial MVP), robótica embarcada em C/C++ e automação de infraestrutura.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
-    <!-- 03 / PROJECTS & INTERACTIVE SIMULATORS -->
-    <section id="projects" class="py-12 border-t border-slate-800/80">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_proj_num">03 / PROJETOS &amp; SIMULADORES INTERATIVOS</span>
-          <h2 class="text-2xl font-bold text-white mt-1" data-i18n="sec_proj_title">Infraestrutura, Cloud AWS &amp; Laboratórios de Engenharia</h2>
-        </div>
-
-        <!-- Category Filter Tabs -->
-        <div class="flex flex-wrap gap-1.5 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800 text-xs font-mono">
-          <button onclick="filterProjects('cloud')" id="tab-cloud" class="px-3 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-bold transition" data-i18n="tab_cloud">Cloud, Infra &amp; Homelab (7)</button>
-          <button onclick="filterProjects('app')" id="tab-app" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition" data-i18n="tab_app">Full-Stack &amp; Robótica (2)</button>
-          <button onclick="filterProjects('labs')" id="tab-labs" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition" data-i18n="tab_labs">Hardware &amp; Telemetry Labs (6)</button>
-          <button onclick="filterProjects('all')" id="tab-all" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition" data-i18n="tab_all">Todos (15)</button>
-        </div>
-      </div>
-
-      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <!-- Populated dynamically by JS -->
-      </div>
-    </section>
-
-    <!-- 04 / TECH STACK -->
-    <section id="stack" class="py-12 border-t border-slate-800/80">
-      <div class="flex items-center gap-3 mb-8">
-        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_stack_num">04 / HABILIDADES &amp; TECNOLOGIAS</span>
-        <div class="h-px bg-slate-800 flex-1"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="eng-card p-5 space-y-3">
-          <h3 class="font-mono text-xs uppercase text-sky-400 font-bold">Cloud, VPS &amp; Network Security</h3>
-          <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">AWS (Amazon S3 / EC2 / IAM / VPC)</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Kaspersky Endpoint Security</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Firewall S4</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Windows Server (2008–2022) &amp; AD</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Linux VPS &amp; AI Isolation</span>
-          </div>
-        </div>
-
-        <div class="eng-card p-5 space-y-3">
-          <h3 class="font-mono text-xs uppercase text-emerald-400 font-bold">Containers, Automation &amp; Backend</h3>
-          <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Docker &amp; Docker Compose</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">PHP</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Python (Boto3)</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">PowerShell &amp; Bash</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Terraform &amp; CloudFormation</span>
-          </div>
-        </div>
-
-        <div class="eng-card p-5 space-y-3">
-          <h3 class="font-mono text-xs uppercase text-purple-400 font-bold">Software &amp; Hardware Systems</h3>
-          <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">C / C++ (Arduino Embedded)</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">React &amp; Tailwind CSS</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Python (Flask / SQLAlchemy)</span>
-            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">S.M.A.R.T. &amp; WMI/CIM Auditing</span>
+            <!-- Dom Helder -->
+            <div class="aero-card p-4 space-y-2.5">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <span class="text-[11px] font-bold uppercase text-indigo-700" data-i18n="edu_badge">Formação Acadêmica</span>
+                  <h3 class="text-sm font-bold text-[#0b2e59]" data-i18n="edu_degree">Bacharelado em Ciência da Computação</h3>
+                  <p class="text-xs font-semibold text-[#1565c0]">Escola Superior Dom Helder Câmara</p>
+                </div>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-300" data-i18n="edu_date">Em andamento</span>
+              </div>
+              <ul class="space-y-1.5 text-xs text-slate-700 list-disc list-inside leading-relaxed">
+                <li data-i18n="edu_b1">Arquitetura de Computadores, Redes, Sistemas Operacionais, Segurança e Sistemas Embarcados.</li>
+                <li data-i18n="edu_b2">Projetos práticos em Cloud/Infra, Web Full-Stack (LuPA MVP) e Robótica Embarcada em C/C++.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 05 / CONTACT -->
-    <section id="contact" class="py-12 border-t border-slate-800/80">
-      <div class="eng-card p-8 text-center space-y-4">
-        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_contact_num">05 / CONTATO</span>
-        <h2 class="text-2xl font-bold text-white" data-i18n="contact_title">Vamos conversar?</h2>
-        <p class="text-sm text-slate-400 max-w-xl mx-auto" data-i18n="contact_desc">
-          Disponível para trocar ideias sobre Infraestrutura de TI, AWS Cloud, Segurança de Rede, Homelabs ou eventos de tecnologia (no Brasil ou em Lyon/França).
-        </p>
-        <div class="flex flex-wrap justify-center gap-3 pt-2 font-mono text-xs">
-          <a href="mailto:pedro.hipolito1203@gmail.com" class="px-4 py-2.5 rounded-lg bg-sky-500 text-slate-950 font-bold hover:bg-sky-400 transition">
-            pedro.hipolito1203@gmail.com
-          </a>
-          <a href="https://github.com/hipolitopeedro" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 hover:bg-slate-800 transition">
-            github.com/hipolitopeedro
-          </a>
-          <a href="https://www.linkedin.com/in/hipolitopeedro/" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 hover:bg-slate-800 transition">
-            linkedin.com/in/hipolitopeedro
-          </a>
+    <!-- ======================================================================
+         WINDOW 3: PROJECTS & INTERACTIVE SIMULATORS EXPLORER
+         ====================================================================== -->
+    <section id="projects" class="win7-window">
+      <div class="flex items-center justify-between px-2 pb-1.5 pt-1">
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-full bg-gradient-to-b from-amber-200 via-amber-400 to-orange-600 border border-white shadow-sm inline-block"></span>
+          <span class="text-xs font-semibold text-slate-900 drop-shadow-[0_0_6px_rgba(255,255,255,0.95)]" data-i18n="win3_title">
+            Windows Explorer — Repositórios, Infraestrutura Cloud &amp; Simuladores Interativos
+          </span>
+        </div>
+        <div class="win7-controls">
+          <span class="win7-ctrl-btn">_</span>
+          <span class="win7-ctrl-btn">□</span>
+          <span class="win7-ctrl-btn win7-ctrl-close">✕</span>
+        </div>
+      </div>
+
+      <div class="win7-body p-5 sm:p-7 space-y-5">
+        <!-- Explorer Command Bar (Filter Tabs) -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-gradient-to-b from-[#eef7ff] to-[#d9ecfc] p-2.5 rounded-md border border-[#9bc2e8] shadow-inner">
+          <div>
+            <span class="text-xs font-bold text-[#0b355e] uppercase tracking-wider" data-i18n="sec_proj_num">03 / PROJETOS &amp; SIMULADORES AO VIVO</span>
+            <p class="text-xs text-slate-600" data-i18n="sec_proj_title">Selecione uma pasta para filtrar os projetos e abrir os simuladores web:</p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="filterProjects('cloud')" id="tab-cloud" class="aero-btn aero-btn-primary" data-i18n="tab_cloud">☁️ Cloud, Infra &amp; Homelab (7)</button>
+            <button onclick="filterProjects('app')" id="tab-app" class="aero-btn" data-i18n="tab_app">💻 Full-Stack &amp; Robótica (2)</button>
+            <button onclick="filterProjects('labs')" id="tab-labs" class="aero-btn" data-i18n="tab_labs">⚡ Hardware &amp; Telemetry Labs (6)</button>
+            <button onclick="filterProjects('all')" id="tab-all" class="aero-btn" data-i18n="tab_all">📁 Todos (15)</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated by JS -->
         </div>
       </div>
     </section>
+
+    <!-- ======================================================================
+         WINDOW 4: TECH STACK & CONTACT
+         ====================================================================== -->
+    <section id="stack" class="win7-window">
+      <div class="flex items-center justify-between px-2 pb-1.5 pt-1">
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-full bg-gradient-to-b from-sky-200 via-blue-500 to-indigo-800 border border-white shadow-sm inline-block"></span>
+          <span class="text-xs font-semibold text-slate-900 drop-shadow-[0_0_6px_rgba(255,255,255,0.95)]">
+            Propriedades de Tecnologias &amp; Contato Direto
+          </span>
+        </div>
+        <div class="win7-controls">
+          <span class="win7-ctrl-btn">_</span>
+          <span class="win7-ctrl-btn">□</span>
+          <span class="win7-ctrl-btn win7-ctrl-close">✕</span>
+        </div>
+      </div>
+
+      <div id="contact" class="win7-body p-5 sm:p-7 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="aero-card p-4 space-y-2.5">
+            <h3 class="text-xs font-bold uppercase text-[#1565c0] border-b border-sky-200 pb-1">☁️ Cloud, VPS &amp; Segurança</h3>
+            <div class="flex flex-wrap gap-1.5 text-xs font-semibold text-slate-700">
+              <span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-300 text-sky-900">AWS (Amazon S3 / EC2 / IAM / VPC)</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-100 border border-emerald-300 text-emerald-900">Kaspersky Endpoint Security</span>
+              <span class="px-2 py-0.5 rounded bg-red-100 border border-red-300 text-red-900">Firewall S4</span>
+              <span class="px-2 py-0.5 rounded bg-blue-100 border border-blue-300 text-blue-900">Windows Server (2008–2022) &amp; AD</span>
+              <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300 text-slate-800">Linux VPS &amp; AI Isolation</span>
+            </div>
+          </div>
+
+          <div class="aero-card p-4 space-y-2.5">
+            <h3 class="text-xs font-bold uppercase text-emerald-700 border-b border-sky-200 pb-1">🐳 Containers, Automação &amp; Backend</h3>
+            <div class="flex flex-wrap gap-1.5 text-xs font-semibold text-slate-700">
+              <span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-300 text-sky-900">Docker &amp; Docker Compose</span>
+              <span class="px-2 py-0.5 rounded bg-indigo-100 border border-indigo-300 text-indigo-900">PHP</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 border border-amber-300 text-amber-900">Python (Boto3)</span>
+              <span class="px-2 py-0.5 rounded bg-blue-100 border border-blue-300 text-blue-900">PowerShell &amp; Bash</span>
+              <span class="px-2 py-0.5 rounded bg-purple-100 border border-purple-300 text-purple-900">Terraform &amp; CloudFormation</span>
+            </div>
+          </div>
+
+          <div class="aero-card p-4 space-y-2.5">
+            <h3 class="text-xs font-bold uppercase text-indigo-700 border-b border-sky-200 pb-1">🔧 Hardware, Redes &amp; Embarcados</h3>
+            <div class="flex flex-wrap gap-1.5 text-xs font-semibold text-slate-700">
+              <span class="px-2 py-0.5 rounded bg-teal-100 border border-teal-300 text-teal-900">C / C++ (Arduino Embedded)</span>
+              <span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-300 text-sky-900">React 19 &amp; Tailwind CSS</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-100 border border-emerald-300 text-emerald-900">Samba SMB3 / Pi-hole / Immich</span>
+              <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300 text-slate-800">S.M.A.R.T. &amp; WMI/CIM Auditing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Banner -->
+        <div class="aero-card p-5 bg-gradient-to-r from-[#e3f3ff] via-[#f2faff] to-[#e0f8ef] border-[#7ec0ee] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-[#0b2e59]" data-i18n="contact_title">Vamos conversar?</h3>
+            <p class="text-xs text-slate-700 mt-0.5" data-i18n="contact_desc">
+              Disponível para trocar ideias sobre Infraestrutura de TI, AWS Cloud, Segurança de Rede, Homelabs ou eventos de tecnologia (no Brasil ou em Lyon/França).
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 shrink-0">
+            <a href="mailto:pedro.hipolito1203@gmail.com" class="aero-btn aero-btn-primary">
+              ✉️ pedro.hipolito1203@gmail.com
+            </a>
+            <a href="https://github.com/hipolitopeedro" target="_blank" class="aero-btn">
+              GitHub ↗
+            </a>
+            <a href="https://www.linkedin.com/in/hipolitopeedro/" target="_blank" class="aero-btn">
+              LinkedIn ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- ========================================================================
+       WINDOWS 7 SUPERBAR (FIXED BOTTOM AERO GLASS TASKBAR)
+       ======================================================================== -->
+  <footer class="win7-taskbar fixed bottom-0 left-0 right-0 h-12 z-50 px-3 flex items-center justify-between select-none">
+    <!-- Left: Start Orb + Pinned Taskbar Windows -->
+    <div class="flex items-center gap-2">
+      <a href="#" class="win7-orb" title="Iniciar — Pedro Hipólito">
+        <span class="text-white font-extrabold text-sm drop-shadow">❖</span>
+      </a>
+
+      <div class="hidden sm:flex items-center gap-1.5 ml-1">
+        <a href="#about" class="win7-task-item px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5">
+          <span>🖥️</span>
+          <span data-i18n="nav_about">01 / Sobre</span>
+        </a>
+        <a href="#experience" class="win7-task-item px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5">
+          <span>🛡️</span>
+          <span data-i18n="nav_exp">02 / Trajetória</span>
+        </a>
+        <a href="#projects" class="win7-task-item px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5">
+          <span>📂</span>
+          <span data-i18n="nav_proj">03 / Projetos &amp; Labs</span>
+        </a>
+        <a href="#stack" class="win7-task-item px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5">
+          <span>⚙️</span>
+          <span data-i18n="nav_stack">04 / Tecnologias</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: System Tray (Language Indicator + Network Icon + Live Clock + Aero Peek Bar) -->
+    <div class="flex items-center gap-3 text-white text-xs">
+      <div class="flex items-center gap-1.5 bg-black/25 px-2.5 py-1 rounded border border-white/20">
+        <span title="AWS & LAN Connected">🌐</span>
+        <span title="Kaspersky & Firewall S4 Active">🛡️</span>
+        <span class="font-mono font-bold text-sky-200" id="trayLangCode">PT-BR</span>
+      </div>
+
+      <div class="text-right leading-tight font-medium pr-2 border-r border-white/30">
+        <div id="win7ClockTime" class="text-xs font-semibold">11:05</div>
+        <div id="win7ClockDate" class="text-[10px] text-sky-100">13/11/2026</div>
+      </div>
+
+      <!-- Show Desktop Aero Peek Sliver -->
+      <a href="#" class="w-2.5 h-10 -mr-2 bg-white/15 hover:bg-sky-300/40 border-l border-white/40 transition block" title="Mostrar Área de Trabalho (Topo)"></a>
+    </div>
+  </footer>
 
   <script>
     const i18n = {
       pt: {
-        nav_about: "01 / Sobre",
-        nav_exp: "02 / Trajetória",
-        nav_proj: "03 / Projetos & Labs",
-        nav_stack: "04 / Tecnologias",
-        nav_contact: "05 / Contato",
-        hero_badge: "BELO HORIZONTE, BRASIL • CLOUD AWS, SECURITY & AI VPS",
-        hero_subtitle: "Infraestrutura de TI, Cloud AWS, Segurança de Rede & VPS para IA.",
-        hero_desc: "Atuo na operação e automação de infraestrutura corporativa na Atex do Brasil: armazenamento e backups no Amazon S3 (AWS), provisionamento de infraestrutura para IA em VPS dedicadas por usuário com Docker, ambientes PHP, gestão de segurança endpoint Kaspersky, Firewall S4 e servidores Windows Server (incluindo ambientes legados 2008) e Linux.",
-        btn_explore: "Explorar Projetos & Simuladores ↓",
-        sec_about_num: "01 / SOBRE MIM",
+        win1_title: "Painel de Controle de Infraestrutura — Pedro Hipólito (Atex do Brasil & AWS Cloud)",
+        win2_title: "Informações do Sistema e Trajetória Profissional — Sobre Mim & Experiência",
+        win3_title: "Windows Explorer — Repositórios, Infraestrutura Cloud & Simuladores Interativos",
+        addr_root: "Computador",
+        addr_leaf: "Cloud AWS, Segurança & VPS para IA",
+        nav_about: "Sobre Mim",
+        nav_exp: "Trajetória",
+        nav_proj: "Projetos & Labs",
+        nav_stack: "Tecnologias & Contato",
+        hero_badge: "BELO HORIZONTE, MG • INFRAESTRUTURA DE TI, CLOUD AWS & SEGURANÇA",
+        hero_subtitle: "Infraestrutura de TI, Cloud AWS, Segurança de Rede & VPS para IA",
+        hero_desc: "Atuo na operação e automação de infraestrutura corporativa na Atex do Brasil: armazenamento e rotinas de backup no Amazon S3 (AWS), provisionamento de infraestrutura para IA em VPS dedicadas por usuário com Docker, ambientes PHP, gestão de segurança endpoint Kaspersky em toda a rede, Firewall S4 e servidores Windows Server (incluindo ambientes legados 2008) e Linux.",
+        btn_explore: "📂 Explorar Projetos & Simuladores (15)",
+        gadget_title: "Monitor de Recursos e Segurança (Atex & Labs)",
+        gadget_footer: "8 Simuladores Web Interativos hospedados",
+        sec_about_num: "01 / Sobre Mim & Atuação Técnica",
         about_p1: "Sou estudante de Ciência da Computação na Escola Superior Dom Helder Câmara (Belo Horizonte - MG) e atuo na área de Infraestrutura de TI e Cloud na Atex do Brasil. Trabalho mantendo ambientes híbridos, redes corporativas e servidores em operação contínua e segura.",
         about_p2: "No dia a dia na Atex, administro rotinas na AWS (especialmente backups corporativos no Amazon S3), infraestrutura dedicada para IA em VPS isoladas por usuário rodando em Docker, aplicações e ambientes em PHP, além de toda a malha de segurança endpoint Kaspersky, regras de Firewall S4 e sustentação/blindagem de Windows Server 2008 e Active Directory.",
         about_p3: "Fora do trabalho, gosto de explorar engenharia de hardware a fundo — desde arquitetura e telemetria de processadores/VRM até montagem de servidores domésticos (Homelab), sistemas embarcados em C/C++ e análise de telemetria física.",
-        lang_title: "Idiomas & Comunicação",
+        lang_title: "🌐 Idiomas & Imersão",
         lang_pt: "Nativo",
         lang_en: "Fluente / Avançado",
-        lang_fr: "Em aprendizado (Projeto Imersão Lyon)",
-        sec_exp_num: "02 / EXPERIÊNCIA & FORMAÇÃO",
+        lang_fr: "Em aprendizado (Lyon)",
+        sec_exp_num: "02 / Experiência Profissional & Formação Acadêmica",
         exp_badge: "Experiência Atual",
-        exp_role: "Infraestrutura de TI, Cloud & Segurança (Estágio)",
+        exp_role: "Infraestrutura de TI, Cloud & Segurança",
         exp_date: "Presente",
-        exp_b1: "AWS Cloud & Backups: Gerenciamento e automação de rotinas de backup corporativo no Amazon S3 com retenção, segurança e verificação de integridade.",
-        exp_b2: "Infraestrutura de IA & Containers: Provisionamento e manutenção de VPS dedicadas por usuário para cargas de Inteligência Artificial utilizando Docker e ambientes PHP.",
-        exp_b3: "Segurança de Rede & Servidores: Administração de toda a malha de segurança Kaspersky na rede, gerência do Firewall S4 e sustentação/hardening de Windows Server 2008 e Active Directory.",
+        exp_b1: "AWS Cloud & Backups corporativos no Amazon S3 com retenção e verificação de integridade.",
+        exp_b2: "Infraestrutura para IA em VPS dedicadas por usuário utilizando Docker e ambientes PHP.",
+        exp_b3: "Rede de segurança Kaspersky, Firewall S4 e sustentação/blindagem de Windows Server 2008 e AD.",
         exp2_badge: "Experiência Anterior",
-        exp2_role: "Soldado de Infantaria & Auxiliar de TI (N1 / N2)",
+        exp2_role: "Soldado de Infantaria & Auxiliar de TI (N1/N2)",
         exp2_org: "Exército Brasileiro",
         exp2_date: "Concluído",
-        exp2_b1: "Atuação no suporte técnico de TI Nível 1 (N1) com escalonamento e resolução de chamados Nível 2 (N2).",
-        exp2_b2: "Manutenção de hardware e estações de trabalho, configuração de rede local e apoio à infraestrutura interna sob alto padrão de disciplina operacional.",
+        exp2_b1: "Suporte técnico de TI Nível 1 (N1) com escalonamento e atuação em chamados Nível 2 (N2).",
+        exp2_b2: "Manutenção de hardware e estações de trabalho, configuração de rede local e apoio operacional sob alto padrão de disciplina.",
         edu_badge: "Formação Acadêmica",
         edu_degree: "Bacharelado em Ciência da Computação",
         edu_date: "Em andamento",
-        edu_b1: "Foco em Arquitetura de Computadores, Redes de Computadores, Sistemas Operacionais, Segurança da Informação e Sistemas Embarcados.",
-        edu_b2: "Desenvolvimento de projetos práticos integrando software full-stack (LuPA Financial MVP), robótica embarcada em C/C++ e automação de infraestrutura.",
-        sec_proj_num: "03 / PROJETOS & SIMULADORES INTERATIVOS",
-        sec_proj_title: "Infraestrutura, Cloud AWS & Laboratórios de Engenharia",
-        tab_cloud: "Cloud, Infra & Homelab (7)",
-        tab_app: "Full-Stack & Robótica (2)",
-        tab_labs: "Hardware & Telemetry Labs (6)",
-        tab_all: "Todos (15)",
-        sec_stack_num: "04 / HABILIDADES & TECNOLOGIAS",
-        sec_contact_num: "05 / CONTATO",
+        edu_b1: "Arquitetura de Computadores, Redes, Sistemas Operacionais, Segurança e Sistemas Embarcados.",
+        edu_b2: "Projetos práticos em Cloud/Infra, Web Full-Stack (LuPA MVP) e Robótica Embarcada em C/C++.",
+        sec_proj_num: "03 / PROJETOS & SIMULADORES AO VIVO",
+        sec_proj_title: "Selecione uma pasta para filtrar os projetos e abrir os simuladores web:",
+        tab_cloud: "☁️ Cloud, Infra & Homelab (7)",
+        tab_app: "💻 Full-Stack & Robótica (2)",
+        tab_labs: "⚡ Hardware & Telemetry Labs (6)",
+        tab_all: "📁 Todos (15)",
         contact_title: "Vamos conversar?",
         contact_desc: "Disponível para trocar ideias sobre Infraestrutura de TI, AWS Cloud, Segurança de Rede, Homelabs ou eventos de tecnologia (no Brasil ou em Lyon/França)."
       },
       en: {
-        nav_about: "01 / About",
-        nav_exp: "02 / Experience",
-        nav_proj: "03 / Projects & Labs",
-        nav_stack: "04 / Tech Stack",
-        nav_contact: "05 / Contact",
-        hero_badge: "BELO HORIZONTE, BRAZIL • AWS CLOUD, SECURITY & AI VPS",
-        hero_subtitle: "IT Infrastructure, AWS Cloud, Network Security & AI VPS.",
+        win1_title: "Infrastructure Control Panel — Pedro Hipólito (Atex do Brasil & AWS Cloud)",
+        win2_title: "System Information & Career Path — About Me & Experience",
+        win3_title: "Windows Explorer — Repositories, Cloud Infrastructure & Live Simulators",
+        addr_root: "Computer",
+        addr_leaf: "AWS Cloud, Security & AI VPS",
+        nav_about: "About Me",
+        nav_exp: "Experience",
+        nav_proj: "Projects & Labs",
+        nav_stack: "Tech & Contact",
+        hero_badge: "BELO HORIZONTE, BRAZIL • IT INFRASTRUCTURE, AWS CLOUD & SECURITY",
+        hero_subtitle: "IT Infrastructure, AWS Cloud, Network Security & AI VPS",
         hero_desc: "Working on enterprise infrastructure operations at Atex do Brasil: Amazon S3 cloud backups, per-user isolated AI infrastructure on VPS using Docker, PHP environments, network-wide Kaspersky endpoint security, S4 Firewall, and Windows Server (including legacy 2008 hardening) & Linux.",
-        btn_explore: "Explore Projects & Live Demos ↓",
-        sec_about_num: "01 / ABOUT ME",
+        btn_explore: "📂 Explore Projects & Live Demos (15)",
+        gadget_title: "Resource & Security Monitor (Atex & Labs)",
+        gadget_footer: "8 Interactive Web Simulators hosted",
+        sec_about_num: "01 / About Me & Technical Focus",
         about_p1: "I am a Computer Science student at Escola Superior Dom Helder Câmara (Belo Horizonte, Brazil) and an IT Infrastructure & Cloud Intern at Atex do Brasil, focused on keeping hybrid server environments, corporate networks, and data pipelines secure and resilient.",
         about_p2: "In my daily role at Atex, I manage AWS Cloud storage (Amazon S3 corporate backups), per-user isolated VPS infrastructure for AI workloads using Docker, PHP environments, network-wide Kaspersky endpoint security, S4 Firewall rules, and Windows Server 2008 / Active Directory administration.",
         about_p3: "Beyond enterprise infrastructure, I enjoy low-level hardware engineering — from CPU/VRM telemetry modeling and self-hosted Homelab servers to C/C++ embedded robotics and motorsport physics telemetry.",
-        lang_title: "Languages",
+        lang_title: "🌐 Languages & Immersion",
         lang_pt: "Native",
         lang_en: "Fluent / Advanced",
-        lang_fr: "Learning (Upcoming Immersion in Lyon, France)",
-        sec_exp_num: "02 / EXPERIENCE & EDUCATION",
+        lang_fr: "Learning (Lyon Immersion)",
+        sec_exp_num: "02 / Professional Experience & Education",
         exp_badge: "Current Experience",
         exp_role: "IT Infrastructure, Cloud & Security Intern",
         exp_date: "Present",
-        exp_b1: "AWS Cloud & Backups: Management and automation of enterprise backup pipelines on Amazon S3 with lifecycle policies and integrity checks.",
-        exp_b2: "AI VPS & Containers: Provisioning and maintenance of dedicated per-user VPS instances for AI workloads using Docker and PHP.",
-        exp_b3: "Network Security & Servers: Administration of the corporate Kaspersky security mesh, S4 Firewall rules, and legacy Windows Server 2008 / Active Directory hardening.",
+        exp_b1: "AWS Cloud & Amazon S3 enterprise backup pipelines with lifecycle policies and integrity checks.",
+        exp_b2: "Dedicated per-user VPS instances for AI workloads using Docker and PHP environments.",
+        exp_b3: "Corporate Kaspersky security mesh, S4 Firewall rules, and Windows Server 2008 / AD hardening.",
         exp2_badge: "Previous Experience",
-        exp2_role: "Infantry Soldier & IT Assistant (L1 / L2 Support)",
+        exp2_role: "Infantry Soldier & IT Assistant (L1/L2)",
         exp2_org: "Brazilian Army (Exército Brasileiro)",
         exp2_date: "Completed",
-        exp2_b1: "Provided Tier 1 (L1) technical support and escalated/resolved Tier 2 (L2) infrastructure and workstation incidents.",
-        exp2_b2: "Performed hardware maintenance, workstation deployment, and local network troubleshooting under strict operational discipline.",
+        exp2_b1: "Provided Tier 1 (L1) technical support and escalated/resolved Tier 2 (L2) infrastructure incidents.",
+        exp2_b2: "Performed hardware maintenance, workstation deployment, and LAN troubleshooting under strict operational discipline.",
         edu_badge: "Education",
         edu_degree: "B.Sc. in Computer Science",
         edu_date: "In Progress",
-        edu_b1: "Focused on Computer Architecture, Computer Networks, Operating Systems, Information Security, and Embedded Systems.",
-        edu_b2: "Built hands-on projects spanning full-stack web apps (LuPA Financial MVP), C/C++ robotics, and cloud infrastructure automation.",
-        sec_proj_num: "03 / PROJECTS & LIVE SIMULATORS",
-        sec_proj_title: "AWS Cloud, Infrastructure & Engineering Labs",
-        tab_cloud: "Cloud, Infra & Homelab (7)",
-        tab_app: "Full-Stack & Robotics (2)",
-        tab_labs: "Hardware & Telemetry Labs (6)",
-        tab_all: "All (15)",
-        sec_stack_num: "04 / SKILLS & TECHNOLOGIES",
-        sec_contact_num: "05 / CONTACT",
+        edu_b1: "Computer Architecture, Computer Networks, Operating Systems, Security, and Embedded Systems.",
+        edu_b2: "Hands-on projects across Cloud/Infra, Full-Stack Web (LuPA MVP), and C/C++ Embedded Robotics.",
+        sec_proj_num: "03 / PROJECTS & LIVE INTERACTIVE SIMULATORS",
+        sec_proj_title: "Select a folder to filter projects and launch live web simulators:",
+        tab_cloud: "☁️ Cloud, Infra & Homelab (7)",
+        tab_app: "💻 Full-Stack & Robotics (2)",
+        tab_labs: "⚡ Hardware & Telemetry Labs (6)",
+        tab_all: "📁 All (15)",
         contact_title: "Let's connect",
         contact_desc: "Open to discussing IT Infrastructure, AWS Cloud, Network Security, Homelabs, or tech meetups in Brazil and Lyon/France."
       },
       fr: {
-        nav_about: "01 / À Propos",
-        nav_exp: "02 / Parcours",
-        nav_proj: "03 / Projets & Labs",
-        nav_stack: "04 / Compétences",
-        nav_contact: "05 / Contact",
-        hero_badge: "BELO HORIZONTE, BRÉSIL • CLOUD AWS, SÉCURITÉ & VPS IA",
-        hero_subtitle: "Infrastructure IT, Cloud AWS, Sécurité Réseau & VPS IA.",
+        win1_title: "Panneau de Configuration Infrastructure — Pedro Hipólito (Atex do Brasil & Cloud AWS)",
+        win2_title: "Informations Système et Parcours — À Propos & Expérience",
+        win3_title: "Windows Explorer — Dépôts, Infrastructure Cloud & Simulateurs Interactifs",
+        addr_root: "Ordinateur",
+        addr_leaf: "Cloud AWS, Sécurité & VPS IA",
+        nav_about: "À Propos",
+        nav_exp: "Parcours",
+        nav_proj: "Projets & Labs",
+        nav_stack: "Compétences & Contact",
+        hero_badge: "BELO HORIZONTE, BRÉSIL • INFRASTRUCTURE IT, CLOUD AWS & SÉCURITÉ",
+        hero_subtitle: "Infrastructure IT, Cloud AWS, Sécurité Réseau & VPS IA",
         hero_desc: "Exploitation et automatisation d'infrastructures IT chez Atex do Brasil : sauvegardes sur Amazon S3 (AWS), infrastructure IA dédiée par utilisateur sur VPS avec Docker, environnements PHP, sécurité réseau Kaspersky, pare-feu S4 et serveurs Windows Server (dont Windows Server 2008) & Linux.",
-        btn_explore: "Explorer les Projets & Démos ↓",
-        sec_about_num: "01 / À PROPOS DE MOI",
+        btn_explore: "📂 Explorer les Projets & Démos (15)",
+        gadget_title: "Moniteur de Ressources et Sécurité (Atex & Labs)",
+        gadget_footer: "8 Simulateurs Web Interactifs hébergés",
+        sec_about_num: "01 / À Propos de Moi & Spécialités",
         about_p1: "Étudiant en Informatique (Licence / Bachelor) à Dom Helder Câmara (Belo Horizonte, Brésil) et Stagiaire en Infrastructure IT & Cloud chez Atex do Brasil. Mon rôle consiste à garantir la sécurité, la disponibilité et l'automatisation des serveurs hybrides et du réseau d'entreprise.",
         about_p2: "Au quotidien chez Atex, j'administre les sauvegardes Cloud AWS (Amazon S3), l'infrastructure VPS dédiée par utilisateur pour l'IA sous Docker, les environnements PHP, ainsi que la sécurité réseau Kaspersky, le pare-feu S4 et le maintien de Windows Server 2008 / Active Directory.",
         about_p3: "Passionné par l'ingénierie matérielle et les systèmes, je conçois également des serveurs domestiques auto-hébergés (Homelab), des projets de robotique embarquée en C/C++ et des simulateurs de télémétrie.",
-        lang_title: "Langues",
+        lang_title: "🌐 Langues & Immersion",
         lang_pt: "Langue maternelle",
         lang_en: "Courant / Avancé",
-        lang_fr: "En apprentissage (Projet d'immersion à Lyon, France)",
-        sec_exp_num: "02 / EXPÉRIENCE & FORMATION",
+        lang_fr: "En apprentissage (Lyon)",
+        sec_exp_num: "02 / Expérience Professionnelle & Formation",
         exp_badge: "Expérience Actuelle",
         exp_role: "Stagiaire Infrastructure IT, Cloud & Sécurité",
         exp_date: "Présent",
-        exp_b1: "Cloud AWS & Sauvegardes : Gestion et automatisation des sauvegardes d'entreprise sur Amazon S3 avec politiques de rétention et contrôle d'intégrité.",
-        exp_b2: "Infrastructure VPS IA & Docker : Déploiement et maintenance de VPS isolées par utilisateur pour des charges d'Intelligence Artificielle sous Docker et PHP.",
-        exp_b3: "Sécurité Réseau & Serveurs : Administration de la sécurité Kaspersky sur tout le réseau, gestion du pare-feu S4 et maintien sécurisé de Windows Server 2008 & Active Directory.",
+        exp_b1: "Cloud AWS & Sauvegardes d'entreprise sur Amazon S3 avec politiques de rétention et intégrité.",
+        exp_b2: "VPS isolées par utilisateur pour l'Intelligence Artificielle sous Docker et environnements PHP.",
+        exp_b3: "Sécurité réseau Kaspersky, pare-feu S4 et maintien sécurisé de Windows Server 2008 & AD.",
         exp2_badge: "Expérience Précédente",
-        exp2_role: "Soldat d'Infanterie & Assistant IT (Support N1 / N2)",
+        exp2_role: "Soldat d'Infanterie & Assistant IT (Support N1/N2)",
         exp2_org: "Armée Brésilienne (Exército Brasileiro)",
         exp2_date: "Terminé",
-        exp2_b1: "Support technique informatique de niveau 1 (N1) avec escalade et résolution d'incidents de niveau 2 (N2).",
-        exp2_b2: "Maintenance matérielle, préparation des postes de travail et dépannage réseau local dans un environnement à forte rigueur opérationnelle.",
+        exp2_b1: "Support technique informatique de niveau 1 (N1) avec escalade et résolution d'incidents N2.",
+        exp2_b2: "Maintenance matérielle, postes de travail et réseau local dans un cadre à forte rigueur opérationnelle.",
         edu_badge: "Formation Académique",
         edu_degree: "Licence / Bachelor en Informatique",
         edu_date: "En cours",
-        edu_b1: "Architecture des ordinateurs, Réseaux informatiques, Systèmes d'exploitation, Sécurité informatique et Systèmes embarqués.",
-        edu_b2: "Réalisation de projets pratiques : application web full-stack (LuPA MVP), robotique embarquée C/C++ et automatisation Cloud.",
+        edu_b1: "Architecture des ordinateurs, Réseaux, Systèmes d'exploitation, Sécurité et Systèmes embarqués.",
+        edu_b2: "Projets pratiques en Cloud/Infra, Web Full-Stack (LuPA MVP) et Robotique C/C++.",
         sec_proj_num: "03 / PROJETS & SIMULATEURS INTERACTIFS",
-        sec_proj_title: "Cloud AWS, Infrastructure IT & Laboratoires d'Ingénierie",
-        tab_cloud: "Cloud, Infra & Homelab (7)",
-        tab_app: "Full-Stack & Robotique (2)",
-        tab_labs: "Labs Hardware & Télémétrie (6)",
-        tab_all: "Tous (15)",
-        sec_stack_num: "04 / COMPÉTENCES TECHNIQUES",
-        sec_contact_num: "05 / CONTACT",
+        sec_proj_title: "Sélectionnez un dossier pour filtrer les projets et ouvrir les simulateurs :",
+        tab_cloud: "☁️ Cloud, Infra & Homelab (7)",
+        tab_app: "💻 Full-Stack & Robotique (2)",
+        tab_labs: "⚡ Labs Hardware & Télémétrie (6)",
+        tab_all: "📁 Tous (15)",
         contact_title: "Restons en contact",
         contact_desc: "Disponible pour échanger sur l'Infrastructure IT, le Cloud AWS, la Sécurité Réseau, les Homelabs ou lors d'événements tech au Brésil et à Lyon / Paris."
       }
@@ -710,9 +1048,11 @@
       ['pt', 'en', 'fr'].forEach(l => {
         const btn = document.getElementById('lang-' + l);
         btn.className = l === lang
-          ? 'px-2.5 py-1 rounded bg-sky-500 text-slate-950 font-bold transition'
-          : 'px-2.5 py-1 rounded text-slate-400 hover:text-white transition';
+          ? 'aero-btn aero-btn-primary !px-2.5 !py-0.5 !text-xs'
+          : 'aero-btn !px-2.5 !py-0.5 !text-xs';
       });
+
+      document.getElementById('trayLangCode').textContent = lang === 'pt' ? 'PT-BR' : lang.toUpperCase();
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -729,8 +1069,8 @@
       ['cloud', 'app', 'labs', 'all'].forEach(c => {
         const btn = document.getElementById('tab-' + c);
         btn.className = c === cat
-          ? 'px-3 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-bold transition'
-          : 'px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition';
+          ? 'aero-btn aero-btn-primary'
+          : 'aero-btn';
       });
       renderProjects();
     }
@@ -740,35 +1080,35 @@
       const list = currentFilter === 'all' ? projects : projects.filter(p => p.cat === currentFilter);
 
       const badgeLabel = {
-        cloud: { pt: 'CLOUD & INFRA', en: 'CLOUD & INFRA', fr: 'CLOUD & INFRA' },
-        app:   { pt: 'FULL-STACK & EMBEDDED', en: 'FULL-STACK & EMBEDDED', fr: 'FULL-STACK & EMBARQUÉ' },
-        labs:  { pt: 'ENGINEERING LAB', en: 'ENGINEERING LAB', fr: 'LAB D\'INGÉNIERIE' }
+        cloud: { pt: '☁️ CLOUD & INFRA', en: '☁️ CLOUD & INFRA', fr: '☁️ CLOUD & INFRA' },
+        app:   { pt: '💻 FULL-STACK & EMBEDDED', en: '💻 FULL-STACK & EMBEDDED', fr: '💻 FULL-STACK & EMBARQUÉ' },
+        labs:  { pt: '⚡ ENGINEERING LAB', en: '⚡ ENGINEERING LAB', fr: '⚡ LAB D\'INGÉNIERIE' }
       };
 
       grid.innerHTML = list.map(p => {
-        const tagsHtml = p.tags.map(t => `<span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-[11px] font-mono text-slate-300">${t}</span>`).join('');
+        const tagsHtml = p.tags.map(t => `<span class="px-2 py-0.5 rounded bg-[#e8f4fd] border border-[#a9d1f5] text-[11px] font-semibold text-[#0d3c6e]">${t}</span>`).join('');
         const demoBtn = p.demo
-          ? `<a href="${p.demo}" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 font-mono text-xs font-semibold transition">● Live Demo / App ↗</a>`
+          ? `<a href="${p.demo}" target="_blank" class="aero-btn aero-btn-green !py-1 !px-2.5 !text-xs">▶ Abrir Simulador ↗</a>`
           : '';
 
         return `
-          <article class="eng-card p-5 flex flex-col justify-between space-y-4">
-            <div class="space-y-2.5">
+          <article class="aero-card p-4 flex flex-col justify-between space-y-3">
+            <div class="space-y-2">
               <div class="flex items-center justify-between">
-                <span class="font-mono text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-gradient-to-b from-white to-sky-100 text-[#0c4a8a] border border-sky-300 shadow-sm">
                   ${badgeLabel[p.cat][currentLang]}
                 </span>
-                ${p.demo ? '<span class="w-2 h-2 rounded-full bg-emerald-400" title="Interactive Web Simulator Available"></span>' : ''}
+                ${p.demo ? '<span class="w-2.5 h-2.5 rounded-full bg-gradient-to-b from-lime-300 to-green-600 border border-white shadow" title="Live Interactive Simulator"></span>' : ''}
               </div>
-              <h3 class="text-base font-bold text-white leading-snug">${p.title}</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">${p.desc[currentLang]}</p>
+              <h3 class="text-sm font-bold text-[#0b2e59] leading-snug">${p.title}</h3>
+              <p class="text-xs text-slate-700 leading-relaxed">${p.desc[currentLang]}</p>
             </div>
 
-            <div class="space-y-3 pt-2 border-t border-slate-800/80">
-              <div class="flex flex-wrap gap-1.5">${tagsHtml}</div>
+            <div class="space-y-2.5 pt-2 border-t border-sky-200/80">
+              <div class="flex flex-wrap gap-1">${tagsHtml}</div>
               <div class="flex items-center gap-2 pt-1">
-                <a href="${p.repo}" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs transition">
-                  Source Code ↗
+                <a href="${p.repo}" target="_blank" class="aero-btn !py-1 !px-2.5 !text-xs">
+                  📂 Código-Fonte ↗
                 </a>
                 ${demoBtn}
               </div>
@@ -778,8 +1118,21 @@
       }).join('');
     }
 
+    function updateClock() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mo = String(now.getMonth() + 1).padStart(2, '0');
+      const yy = now.getFullYear();
+      document.getElementById('win7ClockTime').textContent = `${hh}:${mm}`;
+      document.getElementById('win7ClockDate').textContent = `${dd}/${mo}/${yy}`;
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       renderProjects();
+      updateClock();
+      setInterval(updateClock, 15000);
     });
   </script>
 </body>
