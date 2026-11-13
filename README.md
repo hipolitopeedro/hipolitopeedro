@@ -12,7 +12,7 @@
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="33%" valign="top">
 
 ### 🇧🇷 Português
 - **Estagiário de Infraestrutura de TI & Cloud** na **Atex do Brasil** | Ex-**Soldado de Infantaria & Auxiliar de TI (Suporte N1/N2)** no **Exército Brasileiro**.
@@ -21,7 +21,7 @@
 - Desenvolvendo **automações de infraestrutura, segurança e backup** com **PowerShell**, **Bash**, **Python (Boto3)** e **Docker**.
 
 </td>
-<td width="50%" valign="top">
+<td width="33%" valign="top">
 
 ### 🇺🇸 English
 - **IT Infrastructure & Cloud Intern** at **Atex do Brasil** | Former **Infantry Soldier & IT Assistant (L1/L2 Support)** in the **Brazilian Army**.
@@ -30,15 +30,13 @@
 - Developing **infrastructure, security, and backup automations** using **PowerShell**, **Bash**, **Python (Boto3)**, and **Docker**.
 
 </td>
-</tr>
-<tr>
-<td colspan="2" align="center" valign="top">
+<td width="33%" valign="top">
 
 ### 🇫🇷 Français
-• **Stagiaire en Infrastructure IT & Cloud** chez **Atex do Brasil** | Ancien **Soldat d'Infanterie & Assistant IT (Support N1/N2)** dans l'**Armée Brésilienne**.<br>
-• Étudiant en **Informatique (Licence / Bachelor)** à **Dom Helder Câmara** (Belo Horizonte, Brésil).<br>
-• Expérience pratique avec **AWS Cloud (Amazon S3 & sauvegardes)**, **infrastructure IA sur VPS dédiées par utilisateur**, **Docker**, environnements **PHP**, sécurité réseau **Kaspersky**, **Pare-feu S4** et **Windows Server (dont le maintien de Windows Server 2008 et Active Directory)**.<br>
-• Développement d'**automatisations d'infrastructure et de sauvegarde** via **PowerShell**, **Bash**, **Python (Boto3)** et **Docker**.
+- **Stagiaire en Infrastructure IT & Cloud** chez **Atex do Brasil** | Ancien **Soldat d'Infanterie & Assistant IT (Support N1/N2)** dans l'**Armée Brésilienne**.
+- Étudiant en **Informatique (Licence / Bachelor)** à **Dom Helder Câmara** (Belo Horizonte, Brésil).
+- Expérience pratique avec **AWS Cloud (Amazon S3 & sauvegardes)**, **infrastructure IA sur VPS dédiées par utilisateur**, **Docker**, environnements **PHP**, sécurité réseau **Kaspersky**, **Pare-feu S4** et **Windows Server (dont le maintien de Windows Server 2008 et Active Directory)**.
+- Développement d'**automatisations d'infrastructure et de sauvegarde** via **PowerShell**, **Bash**, **Python (Boto3)** et **Docker**.
 
 </td>
 </tr>
