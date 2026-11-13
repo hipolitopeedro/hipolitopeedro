@@ -87,5 +87,5 @@
 
 ## Contact / Onde me encontrar / Me contacter
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Pedro%20Hip%C3%B3lito-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pedro-hipólito-912511292/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Pedro%20Hip%C3%B3lito-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hipolitopeedro/)
 [![Gmail](https://img.shields.io/badge/Gmail-pedro.hipolito1203%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pedro.hipolito1203@gmail.com)

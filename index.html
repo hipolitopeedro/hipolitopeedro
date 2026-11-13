@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Pedro Hipólito — IT Infrastructure, Cloud AWS & Systems Engineering</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #070a10;
+      --bg-card: #0e131f;
+      --bg-card-hover: #131a2a;
+      --border-subtle: #1e293b;
+      --accent: #38bdf8;
+    }
+    body {
+      background-color: var(--bg-page);
+      color: #e2e8f0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.07), transparent 35%),
+        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 35%);
+    }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .glass-nav {
+      background: rgba(7, 10, 16, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+    }
+    .eng-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.875rem;
+      transition: all 0.22s ease;
+    }
+    .eng-card:hover {
+      background-color: var(--bg-card-hover);
+      border-color: #334155;
+      transform: translateY(-2px);
+    }
+    .grid-bg {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(30, 41, 59, 0.22) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(30, 41, 59, 0.22) 1px, transparent 1px);
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .status-dot { animation: pulseGlow 2.2s infinite; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-sky-500/30 selection:text-sky-200">
+
+  <!-- Sticky Navigation -->
+  <header class="glass-nav sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center font-mono font-bold text-sky-400 text-sm group-hover:bg-sky-500/20 transition">
+          PH
+        </span>
+        <span class="font-mono text-xs text-slate-400 hidden sm:inline">~/pedro-hipolito</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-slate-300">
+        <a href="#about" class="hover:text-sky-400 transition" data-i18n="nav_about">01 / Sobre</a>
+        <a href="#experience" class="hover:text-sky-400 transition" data-i18n="nav_exp">02 / Trajetória</a>
+        <a href="#projects" class="hover:text-sky-400 transition" data-i18n="nav_proj">03 / Projetos & Labs</a>
+        <a href="#stack" class="hover:text-sky-400 transition" data-i18n="nav_stack">04 / Tecnologias</a>
+        <a href="#contact" class="hover:text-sky-400 transition" data-i18n="nav_contact">05 / Contato</a>
+      </nav>
+
+      <!-- Language Switcher PT / EN / FR -->
+      <div class="flex items-center gap-1.5 bg-slate-900/90 p-1 rounded-lg border border-slate-800 font-mono text-xs">
+        <button onclick="setLang('pt')" id="lang-pt" class="px-2.5 py-1 rounded bg-sky-500 text-slate-950 font-bold transition">PT</button>
+        <button onclick="setLang('en')" id="lang-en" class="px-2.5 py-1 rounded text-slate-400 hover:text-white transition">EN</button>
+        <button onclick="setLang('fr')" id="lang-fr" class="px-2.5 py-1 rounded text-slate-400 hover:text-white transition">FR</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-5 pb-24">
+    <!-- HERO SECTION -->
+    <section class="py-14 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 status-dot"></span>
+          <span data-i18n="hero_badge">BELO HORIZONTE, BRASIL • INFRASTRUCTURE & CLOUD AWS</span>
+        </div>
+
+        <div class="space-y-2">
+          <p class="font-mono text-xs text-sky-400 tracking-wider uppercase">~/PEDRO-HIPOLITO / CLOUD-INFRA + SYSTEMS</p>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Pedro Hipólito<span class="text-sky-400">.</span>
+          </h1>
+          <p class="text-xl sm:text-2xl font-semibold text-slate-300" data-i18n="hero_subtitle">
+            Infraestrutura de TI, Cloud AWS & Automação de Sistemas.
+          </p>
+        </div>
+
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl" data-i18n="hero_desc">
+          Atuo na operação e automação de infraestrutura corporativa, rotinas de backup resilientes no Amazon S3, administração de servidores Windows Server (Active Directory) e Linux, e construção de ferramentas de diagnóstico e telemetria. Graduando em Ciência da Computação pela Escola Superior Dom Helder Câmara.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a href="#projects" class="px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition shadow-lg shadow-sky-500/10" data-i18n="btn_explore">
+            Explorar Projetos & Simuladores ↓
+          </a>
+          <a href="https://github.com/hipolitopeedro" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs transition">
+            GitHub (@hipolitopeedro) ↗
+          </a>
+          <a href="https://www.linkedin.com/in/hipolitopeedro/" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs transition">
+            LinkedIn ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Live Infrastructure Telemetry Widget (Inspired by Engineering Console) -->
+      <div class="lg:col-span-5">
+        <div class="eng-card p-5 grid-bg relative overflow-hidden">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+              <span class="font-mono text-[11px] text-slate-400 ml-2">infra-telemetry-node.sh</span>
+            </div>
+            <span class="px-2 py-0.5 text-[10px] font-mono rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">ONLINE</span>
+          </div>
+
+          <div class="space-y-3 font-mono text-xs">
+            <div class="p-3 rounded-lg bg-slate-950/90 border border-slate-800/90">
+              <div class="flex justify-between text-slate-400 text-[11px]">
+                <span>AWS S3 BACKUP PIPELINE</span>
+                <span class="text-emerald-400">SHA-256 VERIFIED</span>
+              </div>
+              <div class="mt-1.5 flex items-center justify-between">
+                <span class="text-slate-200 font-semibold">s3://corp-backups-glacier</span>
+                <span class="text-sky-400" id="simBackupTimer">SLA &lt; 24h OK</span>
+              </div>
+              <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div class="bg-emerald-400 h-full rounded-full" style="width: 96%"></div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-slate-950/90 border border-slate-800/90">
+              <div class="flex justify-between text-slate-400 text-[11px]">
+                <span>HYBRID INFRA &amp; AD DOMAIN</span>
+                <span class="text-sky-400">PORT CHECK</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2 mt-2 text-[11px]">
+                <div class="bg-slate-900 px-2 py-1 rounded border border-slate-800 text-center">
+                  <span class="text-slate-400 block">DNS :53</span>
+                  <span class="text-emerald-400 font-bold">1.2 ms</span>
+                </div>
+                <div class="bg-slate-900 px-2 py-1 rounded border border-slate-800 text-center">
+                  <span class="text-slate-400 block">LDAP :389</span>
+                  <span class="text-emerald-400 font-bold">2.4 ms</span>
+                </div>
+                <div class="bg-slate-900 px-2 py-1 rounded border border-slate-800 text-center">
+                  <span class="text-slate-400 block">SMB3 :445</span>
+                  <span class="text-emerald-400 font-bold">0.8 ms</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-slate-950/90 border border-slate-800/90 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">INTERACTIVE DEMOS HOSTED</span>
+                <span class="text-slate-200 font-bold">8 Live Web Simulators &amp; MVPs</span>
+              </div>
+              <a href="#projects" class="px-2.5 py-1.5 rounded bg-sky-500/15 text-sky-400 border border-sky-500/30 hover:bg-sky-500/25 transition text-[11px]">
+                Launch →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 / ABOUT ME -->
+    <section id="about" class="py-12 border-t border-slate-800/80">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_about_num">01 / SOBRE MIM</span>
+        <div class="h-px bg-slate-800 flex-1"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-7 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p data-i18n="about_p1">
+            Sou estudante de Ciência da Computação na Escola Superior Dom Helder Câmara (Belo Horizonte - MG) e atuo na área de Infraestrutura de TI na Atex do Brasil. Meu foco principal é garantir que servidores, redes e rotinas críticas de dados operem com segurança, automação e alta disponibilidade.
+          </p>
+          <p data-i18n="about_p2">
+            No dia a dia, trabalho diretamente com armazenamento em nuvem na AWS (especialmente Amazon S3 e políticas de ciclo de vida / retenção de backups corporativos), administração de Windows Server e Active Directory, servidores Linux e scripts em PowerShell, Bash e Python (Boto3).
+          </p>
+          <p data-i18n="about_p3">
+            Fora do ambiente corporativo, gosto de explorar engenharia de hardware a fundo — desde arquitetura e telemetria de processadores/VRM até montagem de servidores domésticos (Homelab), sistemas embarcados em C/C++ e análise de telemetria física.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 space-y-3">
+          <div class="eng-card p-5 space-y-3">
+            <h3 class="font-mono text-xs uppercase tracking-wider text-sky-400" data-i18n="lang_title">Idiomas & Comunicação</h3>
+            <div class="space-y-2.5 text-sm">
+              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <span class="font-medium text-white">Português</span>
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400" data-i18n="lang_pt">Nativo</span>
+              </div>
+              <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                <span class="font-medium text-white">English</span>
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-sky-500/15 text-sky-400" data-i18n="lang_en">Fluente / Avançado</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-white">Français</span>
+                <span class="font-mono text-xs px-2 py-0.5 rounded bg-purple-500/15 text-purple-300" data-i18n="lang_fr">Em aprendizado (Projeto Imersão Lyon)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / EXPERIENCE & EDUCATION -->
+    <section id="experience" class="py-12 border-t border-slate-800/80">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_exp_num">02 / EXPERIÊNCIA & FORMAÇÃO</span>
+        <div class="h-px bg-slate-800 flex-1"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Work Experience -->
+        <div class="eng-card p-6 space-y-4">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <span class="font-mono text-xs text-emerald-400 uppercase" data-i18n="exp_badge">Experiência Profissional</span>
+              <h3 class="text-lg font-bold text-white mt-0.5" data-i18n="exp_role">Infraestrutura de TI & Cloud (Estágio)</h3>
+              <p class="text-sm font-medium text-sky-400">Atex do Brasil</p>
+            </div>
+            <span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300" data-i18n="exp_date">Presente</span>
+          </div>
+          <ul class="space-y-2 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+            <li data-i18n="exp_b1">Gerenciamento e automação de rotinas de backup corporativo no Amazon S3 (criptografia SSE, políticas de transição Glacier e verificação de integridade).</li>
+            <li data-i18n="exp_b2">Administração de usuários, grupos, GPOs e políticas de segurança no Windows Server e Active Directory (AD).</li>
+            <li data-i18n="exp_b3">Monitoramento de conectividade de rede, servidores Linux, suporte N1/N2/N3 e criação de scripts em PowerShell, Bash e Python.</li>
+          </ul>
+        </div>
+
+        <!-- Academic Education -->
+        <div class="eng-card p-6 space-y-4">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <span class="font-mono text-xs text-purple-400 uppercase" data-i18n="edu_badge">Formação Acadêmica</span>
+              <h3 class="text-lg font-bold text-white mt-0.5" data-i18n="edu_degree">Bacharelado em Ciência da Computação</h3>
+              <p class="text-sm font-medium text-sky-400">Escola Superior Dom Helder Câmara (BH - MG)</p>
+            </div>
+            <span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300" data-i18n="edu_date">Em andamento</span>
+          </div>
+          <ul class="space-y-2 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+            <li data-i18n="edu_b1">Foco em Arquitetura de Computadores, Redes de Computadores, Sistemas Operacionais, Engenharia de Software e Sistemas Embarcados.</li>
+            <li data-i18n="edu_b2">Desenvolvimento de projetos práticos integrando software full-stack (LuPA Financial MVP), robótica embarcada em C/C++ e automação de infraestrutura.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 / PROJECTS & INTERACTIVE SIMULATORS -->
+    <section id="projects" class="py-12 border-t border-slate-800/80">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_proj_num">03 / PROJETOS & SIMULADORES INTERATIVOS</span>
+          <h2 class="text-2xl font-bold text-white mt-1" data-i18n="sec_proj_title">Infraestrutura, Cloud AWS & Laboratórios de Engenharia</h2>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap gap-1.5 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800 text-xs font-mono">
+          <button onclick="filterProjects('cloud')" id="tab-cloud" class="px-3 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-bold transition" data-i18n="tab_cloud">Cloud, Infra & Homelab (7)</button>
+          <button onclick="filterProjects('app')" id="tab-app" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition" data-i18n="tab_app">Full-Stack & Robótica (2)</button>
+          <button onclick="filterProjects('labs')" id="tab-labs" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition" data-i18n="tab_labs">Hardware & Telemetry Labs (6)</button>
+          <button onclick="filterProjects('all')" id="tab-all" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition" data-i18n="tab_all">Todos (15)</button>
+        </div>
+      </div>
+
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- 04 / TECH STACK -->
+    <section id="stack" class="py-12 border-t border-slate-800/80">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_stack_num">04 / HABILIDADES & TECNOLOGIAS</span>
+        <div class="h-px bg-slate-800 flex-1"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="eng-card p-5 space-y-3">
+          <h3 class="font-mono text-xs uppercase text-sky-400 font-bold">Cloud & Infrastructure</h3>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">AWS (Amazon S3 / EC2 / IAM / VPC)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Windows Server</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Active Directory (AD / GPO)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Linux (Ubuntu / Debian)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">TCP/IP, DNS, SMB3</span>
+          </div>
+        </div>
+
+        <div class="eng-card p-5 space-y-3">
+          <h3 class="font-mono text-xs uppercase text-emerald-400 font-bold">Automation, DevOps & IaC</h3>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Python (Boto3)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">PowerShell</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Bash Scripting</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Docker & Docker Compose</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Terraform & CloudFormation</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">GitHub Actions CI/CD</span>
+          </div>
+        </div>
+
+        <div class="eng-card p-5 space-y-3">
+          <h3 class="font-mono text-xs uppercase text-purple-400 font-bold">Software & Hardware Systems</h3>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">C / C++ (Arduino Embedded)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">React & Tailwind CSS</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">Python (Flask / SQLAlchemy)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">S.M.A.R.T. & WMI/CIM Auditing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 / CONTACT -->
+    <section id="contact" class="py-12 border-t border-slate-800/80">
+      <div class="eng-card p-8 text-center space-y-4">
+        <span class="font-mono text-xs font-bold text-sky-400 uppercase tracking-widest" data-i18n="sec_contact_num">05 / CONTATO</span>
+        <h2 class="text-2xl font-bold text-white" data-i18n="contact_title">Vamos conversar?</h2>
+        <p class="text-sm text-slate-400 max-w-xl mx-auto" data-i18n="contact_desc">
+          Disponível para trocar ideias sobre Infraestrutura de TI, AWS Cloud, Homelabs, Automação ou eventos de tecnologia (no Brasil ou em Lyon/França).
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 pt-2 font-mono text-xs">
+          <a href="mailto:pedro.hipolito1203@gmail.com" class="px-4 py-2.5 rounded-lg bg-sky-500 text-slate-950 font-bold hover:bg-sky-400 transition">
+            pedro.hipolito1203@gmail.com
+          </a>
+          <a href="https://github.com/hipolitopeedro" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 hover:bg-slate-800 transition">
+            github.com/hipolitopeedro
+          </a>
+          <a href="https://www.linkedin.com/in/hipolitopeedro/" target="_blank" class="px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 hover:bg-slate-800 transition">
+            linkedin.com/in/hipolitopeedro
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const i18n = {
+      pt: {
+        nav_about: "01 / Sobre",
+        nav_exp: "02 / Trajetória",
+        nav_proj: "03 / Projetos & Labs",
+        nav_stack: "04 / Tecnologias",
+        nav_contact: "05 / Contato",
+        hero_badge: "BELO HORIZONTE, BRASIL • INFRASTRUCTURE & CLOUD AWS",
+        hero_subtitle: "Infraestrutura de TI, Cloud AWS & Automação de Sistemas.",
+        hero_desc: "Atuo na operação e automação de infraestrutura corporativa, rotinas de backup resilientes no Amazon S3, administração de servidores Windows Server (Active Directory) e Linux, e construção de ferramentas de diagnóstico e telemetria. Graduando em Ciência da Computação pela Escola Superior Dom Helder Câmara.",
+        btn_explore: "Explorar Projetos & Simuladores ↓",
+        sec_about_num: "01 / SOBRE MIM",
+        about_p1: "Sou estudante de Ciência da Computação na Escola Superior Dom Helder Câmara (Belo Horizonte - MG) e atuo na área de Infraestrutura de TI na Atex do Brasil. Meu foco principal é garantir que servidores, redes e rotinas críticas de dados operem com segurança, automação e alta disponibilidade.",
+        about_p2: "No dia a dia, trabalho diretamente com armazenamento em nuvem na AWS (especialmente Amazon S3 e políticas de ciclo de vida / retenção de backups corporativos), administração de Windows Server e Active Directory, servidores Linux e scripts em PowerShell, Bash e Python (Boto3).",
+        about_p3: "Fora do ambiente corporativo, gosto de explorar engenharia de hardware a fundo — desde arquitetura e telemetria de processadores/VRM até montagem de servidores domésticos (Homelab), sistemas embarcados em C/C++ e análise de telemetria física.",
+        lang_title: "Idiomas & Comunicação",
+        lang_pt: "Nativo",
+        lang_en: "Fluente / Avançado",
+        lang_fr: "Em aprendizado (Projeto Imersão Lyon)",
+        sec_exp_num: "02 / EXPERIÊNCIA & FORMAÇÃO",
+        exp_badge: "Experiência Profissional",
+        exp_role: "Infraestrutura de TI & Cloud (Estágio)",
+        exp_date: "Presente",
+        exp_b1: "Gerenciamento e automação de rotinas de backup corporativo no Amazon S3 (criptografia SSE, políticas de transição Glacier e verificação de integridade).",
+        exp_b2: "Administração de usuários, grupos, GPOs e políticas de segurança no Windows Server e Active Directory (AD).",
+        exp_b3: "Monitoramento de conectividade de rede, servidores Linux, suporte N1/N2/N3 e criação de scripts em PowerShell, Bash e Python.",
+        edu_badge: "Formação Acadêmica",
+        edu_degree: "Bacharelado em Ciência da Computação",
+        edu_date: "Em andamento",
+        edu_b1: "Foco em Arquitetura de Computadores, Redes de Computadores, Sistemas Operacionais, Engenharia de Software e Sistemas Embarcados.",
+        edu_b2: "Desenvolvimento de projetos práticos integrando software full-stack (LuPA Financial MVP), robótica embarcada em C/C++ e automação de infraestrutura.",
+        sec_proj_num: "03 / PROJETOS & SIMULADORES INTERATIVOS",
+        sec_proj_title: "Infraestrutura, Cloud AWS & Laboratórios de Engenharia",
+        tab_cloud: "Cloud, Infra & Homelab (7)",
+        tab_app: "Full-Stack & Robótica (2)",
+        tab_labs: "Hardware & Telemetry Labs (6)",
+        tab_all: "Todos (15)",
+        sec_stack_num: "04 / HABILIDADES & TECNOLOGIAS",
+        sec_contact_num: "05 / CONTATO",
+        contact_title: "Vamos conversar?",
+        contact_desc: "Disponível para trocar ideias sobre Infraestrutura de TI, AWS Cloud, Homelabs, Automação ou eventos de tecnologia (no Brasil ou em Lyon/França)."
+      },
+      en: {
+        nav_about: "01 / About",
+        nav_exp: "02 / Experience",
+        nav_proj: "03 / Projects & Labs",
+        nav_stack: "04 / Tech Stack",
+        nav_contact: "05 / Contact",
+        hero_badge: "BELO HORIZONTE, BRAZIL • INFRASTRUCTURE & AWS CLOUD",
+        hero_subtitle: "IT Infrastructure, AWS Cloud & Systems Automation.",
+        hero_desc: "Focused on enterprise infrastructure operations, resilient Amazon S3 cloud backup workflows, Windows Server (Active Directory) and Linux administration, and systems telemetry tooling. B.Sc. in Computer Science student at Dom Helder Câmara.",
+        btn_explore: "Explore Projects & Live Demos ↓",
+        sec_about_num: "01 / ABOUT ME",
+        about_p1: "I am a Computer Science student at Escola Superior Dom Helder Câmara (Belo Horizonte, Brazil) and an IT Infrastructure Intern at Atex do Brasil. My core focus is ensuring servers, networks, and critical data backup pipelines run with security, automation, and high availability.",
+        about_p2: "In my daily work, I work hands-on with AWS Cloud storage (particularly Amazon S3 enterprise backup automation, lifecycle policies, and integrity verification), Windows Server & Active Directory administration, Linux servers, and scripting in PowerShell, Bash, and Python (Boto3).",
+        about_p3: "Beyond enterprise infrastructure, I enjoy low-level hardware engineering — from CPU/VRM telemetry modeling and self-hosted Homelab servers to C/C++ embedded robotics and motorsport physics telemetry.",
+        lang_title: "Languages",
+        lang_pt: "Native",
+        lang_en: "Fluent / Advanced",
+        lang_fr: "Learning (Upcoming Immersion in Lyon, France)",
+        sec_exp_num: "02 / EXPERIENCE & EDUCATION",
+        exp_badge: "Professional Experience",
+        exp_role: "IT Infrastructure & Cloud Intern",
+        exp_date: "Present",
+        exp_b1: "Management and automation of enterprise backup pipelines on Amazon S3 (SSE encryption, Glacier lifecycle policies, and SHA-256 verification).",
+        exp_b2: "User lifecycle, group management, GPOs, and security auditing in Windows Server and Active Directory (AD).",
+        exp_b3: "Network connectivity diagnostics, Linux server administration, L1/L2/L3 support, and automation in PowerShell, Bash, and Python.",
+        edu_badge: "Education",
+        edu_degree: "B.Sc. in Computer Science",
+        edu_date: "In Progress",
+        edu_b1: "Focused on Computer Architecture, Computer Networks, Operating Systems, Software Engineering, and Embedded Systems.",
+        edu_b2: "Built hands-on projects spanning full-stack web apps (LuPA Financial MVP), C/C++ robotics, and cloud infrastructure automation.",
+        sec_proj_num: "03 / PROJECTS & LIVE SIMULATORS",
+        sec_proj_title: "AWS Cloud, Infrastructure & Engineering Labs",
+        tab_cloud: "Cloud, Infra & Homelab (7)",
+        tab_app: "Full-Stack & Robotics (2)",
+        tab_labs: "Hardware & Telemetry Labs (6)",
+        tab_all: "All (15)",
+        sec_stack_num: "04 / SKILLS & TECHNOLOGIES",
+        sec_contact_num: "05 / CONTACT",
+        contact_title: "Let's connect",
+        contact_desc: "Open to discussing IT Infrastructure, AWS Cloud, Homelabs, Automation, or tech meetups in Brazil and Lyon/France."
+      },
+      fr: {
+        nav_about: "01 / À Propos",
+        nav_exp: "02 / Parcours",
+        nav_proj: "03 / Projets & Labs",
+        nav_stack: "04 / Compétences",
+        nav_contact: "05 / Contact",
+        hero_badge: "BELO HORIZONTE, BRÉSIL • INFRASTRUCTURE IT & CLOUD AWS",
+        hero_subtitle: "Infrastructure IT, Cloud AWS & Automatisation des Systèmes.",
+        hero_desc: "Spécialisé dans l'exploitation et l'automatisation d'infrastructures IT, les sauvegardes d'entreprise sur Amazon S3, l'administration Windows Server (Active Directory) et Linux, ainsi que les outils de diagnostic réseau. Étudiant en Informatique à Dom Helder Câmara.",
+        btn_explore: "Explorer les Projets & Démos ↓",
+        sec_about_num: "01 / À PROPOS DE MOI",
+        about_p1: "Étudiant en Informatique (Licence / Bachelor) à Dom Helder Câmara (Belo Horizonte, Brésil) et Stagiaire en Infrastructure IT chez Atex do Brasil. Mon objectif principal est d'assurer la sécurité, l'automatisation et la haute disponibilité des serveurs, des réseaux et des sauvegardes critiques.",
+        about_p2: "Au quotidien, j'interviens sur le stockage Cloud AWS (notamment Amazon S3, politiques de cycle de vie Glacier et intégrité des sauvegardes), l'administration Windows Server & Active Directory, les serveurs Linux et l'automatisation via PowerShell, Bash et Python (Boto3).",
+        about_p3: "Passionné par l'ingénierie matérielle et les systèmes, je conçois également des serveurs domestiques auto-hébergés (Homelab), des projets de robotique embarquée en C/C++ et des simulateurs de télémétrie.",
+        lang_title: "Langues",
+        lang_pt: "Langue maternelle",
+        lang_en: "Courant / Avancé",
+        lang_fr: "En apprentissage (Projet d'immersion à Lyon, France)",
+        sec_exp_num: "02 / EXPÉRIENCE & FORMATION",
+        exp_badge: "Expérience Professionnelle",
+        exp_role: "Stagiaire en Infrastructure IT & Cloud",
+        exp_date: "Présent",
+        exp_b1: "Gestion et automatisation des sauvegardes d'entreprise sur Amazon S3 (chiffrement SSE, transition Glacier et vérification SHA-256).",
+        exp_b2: "Administration des utilisateurs, groupes, GPO et politiques de sécurité sous Windows Server et Active Directory (AD).",
+        exp_b3: "Diagnostic réseau, administration de serveurs Linux, support technique et création de scripts PowerShell, Bash et Python.",
+        edu_badge: "Formation Académique",
+        edu_degree: "Licence / Bachelor en Informatique",
+        edu_date: "En cours",
+        edu_b1: "Architecture des ordinateurs, Réseaux informatiques, Systèmes d'exploitation, Génie logiciel et Systèmes embarqués.",
+        edu_b2: "Réalisation de projets pratiques : application web full-stack (LuPA MVP), robotique embarquée C/C++ et automatisation Cloud.",
+        sec_proj_num: "03 / PROJETS & SIMULATEURS INTERACTIFS",
+        sec_proj_title: "Cloud AWS, Infrastructure IT & Laboratoires d'Ingénierie",
+        tab_cloud: "Cloud, Infra & Homelab (7)",
+        tab_app: "Full-Stack & Robotique (2)",
+        tab_labs: "Labs Hardware & Télémétrie (6)",
+        tab_all: "Tous (15)",
+        sec_stack_num: "04 / COMPÉTENCES TECHNIQUES",
+        sec_contact_num: "05 / CONTACT",
+        contact_title: "Restons en contact",
+        contact_desc: "Disponible pour échanger sur l'Infrastructure IT, le Cloud AWS, les Homelabs ou lors d'événements tech au Brésil et à Lyon / Paris."
+      }
+    };
+
+    const projects = [
+      {
+        cat: "cloud",
+        title: "AWS S3 Enterprise Backup Suite",
+        tags: ["AWS S3", "Python Boto3", "PowerShell", "Bash", "Glacier"],
+        repo: "https://github.com/hipolitopeedro/aws-s3-enterprise-backup",
+        demo: null,
+        desc: {
+          pt: "Automação corporativa de backups para Amazon S3 (Windows Server e Linux) com manifesto SHA-256, auditoria de SLA (<26h), políticas IAM anti-ransomware e ciclo de vida Glacier Deep Archive.",
+          en: "Enterprise backup automation for Amazon S3 (Windows Server & Linux) with SHA-256 manifests, SLA freshness verifier, anti-ransomware IAM policies, and Glacier lifecycle rules.",
+          fr: "Automatisation des sauvegardes d'entreprise vers Amazon S3 (Windows Server & Linux) avec manifestes SHA-256, audit SLA, politiques IAM anti-ransomware et cycle de vie Glacier."
+        }
+      },
+      {
+        cat: "cloud",
+        title: "OptiPlex Homelab Stack (NAS 3TB, Immich & PaperMC)",
+        tags: ["Docker Compose", "Linux", "Samba SMB3", "Immich", "Pi-hole"],
+        repo: "https://github.com/hipolitopeedro/optiplex-homelab-stack",
+        demo: "https://hipolitopeedro.github.io/optiplex-homelab-stack/",
+        desc: {
+          pt: "Infraestrutura de nuvem pessoal em containers para servidor Dell OptiPlex (i5-3470, 8GB RAM, 3TB HDD): Immich (Google Fotos), Jellyfin, Samba SMB3, Pi-hole DNS e Minecraft PaperMC com backup local e auditoria S.M.A.R.T.",
+          en: "Containerized personal cloud & media stack for a Dell OptiPlex (i5-3470, 8GB RAM, 3TB HDD): Immich photo backup, Jellyfin, Gigabit Samba NAS, Pi-hole DNS, and PaperMC with S.M.A.R.T. health auditing.",
+          fr: "Infrastructure de cloud personnel conteneurisée (Docker Compose) sur serveur Dell OptiPlex 3 To : Immich (photos), Jellyfin, NAS Samba SMB3, Pi-hole DNS et serveur Minecraft avec audit S.M.A.R.T."
+        }
+      },
+      {
+        cat: "cloud",
+        title: "AWS Cloud Automation & Security Auditor (Boto3)",
+        tags: ["AWS", "Python", "Boto3", "FinOps", "IAM"],
+        repo: "https://github.com/hipolitopeedro/aws-cloud-automation-boto3",
+        demo: null,
+        desc: {
+          pt: "Scripts de administração AWS, auditoria de segurança S3 (bloqueio de acesso público e criptografia), rotação de snapshots EBS, auditoria de credenciais IAM/MFA e relatório FinOps.",
+          en: "AWS administration, S3 public access & encryption security auditor, EBS snapshot lifecycle manager, IAM credential/MFA auditor, and unused resource FinOps scanner.",
+          fr: "Outils d'administration AWS en Python (Boto3) : audit de sécurité S3, gestion du cycle de vie des snapshots EBS, vérification IAM/MFA et optimisation des coûts FinOps."
+        }
+      },
+      {
+        cat: "cloud",
+        title: "AWS Multi-AZ VPC Infrastructure (IaC)",
+        tags: ["Terraform", "CloudFormation", "AWS VPC", "Networking"],
+        repo: "https://github.com/hipolitopeedro/aws-vpc-infra-iac",
+        demo: null,
+        desc: {
+          pt: "Provisionamento de arquitetura de rede VPC Multi-AZ na AWS via Terraform e CloudFormation (sub-redes públicas/privadas, NAT Gateway, Route Tables e Security Groups).",
+          en: "Infrastructure as Code (Terraform & CloudFormation) provisioning a Multi-AZ AWS VPC with public/private subnets, NAT Gateways, Route Tables, and hardened Security Groups.",
+          fr: "Infrastructure as Code (Terraform & CloudFormation) pour déployer une architecture réseau VPC Multi-AZ sur AWS (sous-réseaux publics/privés, NAT Gateway et Security Groups)."
+        }
+      },
+      {
+        cat: "cloud",
+        title: "Active Directory & Windows Server Toolkit",
+        tags: ["PowerShell", "Active Directory", "Windows Server", "SysAdmin"],
+        repo: "https://github.com/hipolitopeedro/ad-windows-sysadmin-toolkit",
+        demo: null,
+        desc: {
+          pt: "Kit de administração Active Directory e Windows Server em PowerShell: auditoria de contas inativas, provisionamento em massa via CSV, expiração de senhas e saúde do servidor.",
+          en: "PowerShell toolkit for Active Directory & Windows Server: inactive account audits, bulk CSV user onboarding, password expiration reports, and server health checks.",
+          fr: "Boîte à outils PowerShell pour Active Directory et Windows Server : audit des comptes inactifs, création d'utilisateurs en masse via CSV et contrôle de santé des serveurs."
+        }
+      },
+      {
+        cat: "cloud",
+        title: "Linux Server Infrastructure Automation",
+        tags: ["Bash", "Linux", "Systemd", "SHA-256"],
+        repo: "https://github.com/hipolitopeedro/linux-infra-automation",
+        demo: null,
+        desc: {
+          pt: "Automação em Bash para servidores Linux: auditoria de saúde do sistema, rotação de backups com verificação SHA-256 e watchdog de auto-recuperação de serviços críticos.",
+          en: "Bash automation suite for Linux servers: system health auditing, backup rotation with SHA-256 integrity checks, and critical service auto-healing watchdog.",
+          fr: "Suite d'automatisation Bash pour serveurs Linux : audit de santé système, rotation de sauvegardes avec contrôle SHA-256 et redémarrage automatique des services critiques."
+        }
+      },
+      {
+        cat: "cloud",
+        title: "Network Diagnostics & Port Auditing Suite",
+        tags: ["Python", "PowerShell", "TCP/IP", "DNS", "LDAP"],
+        repo: "https://github.com/hipolitopeedro/network-diagnostics-suite",
+        demo: null,
+        desc: {
+          pt: "Ferramentas em Python e PowerShell para varredura concorrente de sub-rede, teste de portas críticas (DNS, LDAP, Kerberos, SMB, RDP, HTTPS) e diagnóstico de latência.",
+          en: "Concurrent Python & PowerShell tools for subnet sweeps, critical infrastructure TCP port checks (DNS, LDAP, Kerberos, SMB, HTTPS), and latency troubleshooting.",
+          fr: "Outils Python et PowerShell pour le diagnostic réseau, la vérification des ports critiques (DNS, LDAP, Kerberos, SMB, HTTPS) et l'analyse de latence."
+        }
+      },
+      {
+        cat: "app",
+        title: "LuPA — Sistema de Gestão Financeira (Full-Stack MVP)",
+        tags: ["React 19", "Flask", "Tailwind CSS", "Recharts", "jsPDF"],
+        repo: "https://github.com/hipolitopeedro/gestor-lojaV1",
+        demo: "https://hipolitopeedro.github.io/gestor-lojaV1/",
+        desc: {
+          pt: "Aplicação web full-stack de gestão financeira para PMEs com conciliação automática de taxas de maquininha/cartão, fluxo de caixa, contas a pagar/receber, exportação PDF e diagnóstico IA.",
+          en: "Full-stack financial management web app for SMBs featuring card fee reconciliation, interactive Recharts dashboards, accounts payable/receivable, PDF reports, and AI diagnostics.",
+          fr: "Application web full-stack de gestion financière pour PME avec calcul des frais de terminal bancaire, tableaux de bord interactifs, export PDF et diagnostic financier."
+        }
+      },
+      {
+        cat: "app",
+        title: "Arduino Robotics & Embedded Systems Labs",
+        tags: ["C/C++", "Arduino", "HC-SR04", "4-DOF Arm", "4WD Rover"],
+        repo: "https://github.com/hipolitopeedro/arduino-robotics-embedded-labs",
+        demo: "https://hipolitopeedro.github.io/arduino-robotics-embedded-labs/",
+        desc: {
+          pt: "14 projetos de robótica e sistemas embarcados em C/C++ (braço robótico de 4 eixos com captura por ultrassom, robô 4WD autônomo com desvio de obstáculos, sensor de estacionamento LCD e displays 7-seg).",
+          en: "14 C/C++ Arduino robotics projects including a 4-DOF ultrasonic robotic arm, autonomous 4WD obstacle-avoidance rover, LCD parking sensor, and 7-segment hex/binary counters.",
+          fr: "14 projets de robotique et systèmes embarqués en C/C++ (bras robotique 4 axes à ultrasons, rover 4WD autonome avec évitement d'obstacles, radar de recul LCD)."
+        }
+      },
+      {
+        cat: "labs",
+        title: "AMD Overclocking, DDR4/DDR5 & WHEA Telemetry Toolkit",
+        tags: ["Python", "PowerShell", "AMD Ryzen", "DDR4/DDR5", "WHEA"],
+        repo: "https://github.com/hipolitopeedro/amd-overclock-telemetry-toolkit",
+        demo: "https://hipolitopeedro.github.io/amd-overclock-telemetry-toolkit/",
+        desc: {
+          pt: "Analisador de logs HWiNFO64 (detecção de Clock Stretching e delta térmico Radeon Hotspot), calculadora de subtimings DDR4/DDR5 em nanossegundos e decodificador WHEA Event ID 18.",
+          en: "HWiNFO64 telemetry analyzer (Clock Stretching & Radeon Hotspot delta), DDR4/DDR5 subtiming latency calculator, and Windows Event Viewer WHEA APIC ID core decoder.",
+          fr: "Analyseur de télémétrie HWiNFO64, calculateur de latence mémoire DDR4/DDR5 et décodeur d'erreurs matérielles WHEA pour plateformes AMD Ryzen & Radeon."
+        }
+      },
+      {
+        cat: "labs",
+        title: "AMD Ryzen PBO2 & V/F Curve Simulation Engine",
+        tags: ["Python", "Zen 3 / 4 / 5", "Curve Optimizer", "SMT Masks"],
+        repo: "https://github.com/hipolitopeedro/pbo2-curve-optimizer-autotuner",
+        demo: "https://hipolitopeedro.github.io/pbo2-curve-optimizer-autotuner/",
+        desc: {
+          pt: "Simulador da curva Tensão-Frequência (V/F) para arquiteturas Zen 3/4/5, gerador de máscaras hexadecimais de afinidade SMT e otimizador de Curve Optimizer baseado no ranking CPPC.",
+          en: "Voltage-Frequency (V/F) curve simulator for Zen 3/4/5 CPUs, per-core hexadecimal SMT thread affinity mask generator, and CPPC-aware Curve Optimizer solver.",
+          fr: "Simulateur de courbe Tension-Fréquence (V/F) pour processeurs AMD Ryzen Zen 3/4/5 et générateur de masques d'affinité SMT par cœur."
+        }
+      },
+      {
+        cat: "labs",
+        title: "Motherboard VRM Thermal Physics & LLC Simulator",
+        tags: ["Python", "Power Electronics", "MOSFET", "LLC Vdroop"],
+        repo: "https://github.com/hipolitopeedro/vrm-thermal-power-simulator",
+        demo: "https://hipolitopeedro.github.io/vrm-thermal-power-simulator/",
+        desc: {
+          pt: "Modelagem física de perdas por condução e chaveamento em MOSFETs de conversores Buck multifásicos, temperatura de VRM e resposta transiente de Load-Line Calibration (Vdroop/Overshoot).",
+          en: "Electrical and thermal physics model for multi-phase motherboard VRMs (MOSFET conduction/switching losses) and Load-Line Calibration transient Vdroop/overshoot.",
+          fr: "Modélisation physique et thermique des VRM de cartes mères (pertes MOSFET) et simulation transitoire Load-Line Calibration (Vdroop)."
+        }
+      },
+      {
+        cat: "labs",
+        title: "PCIe 4.0/5.0, Smart Access Memory (ReBAR) & Frame-Time Profiler",
+        tags: ["Python", "PowerShell", "PCIe", "ReBAR", "PresentMon"],
+        repo: "https://github.com/hipolitopeedro/pcie-rebar-frametime-profiler",
+        demo: "https://hipolitopeedro.github.io/pcie-rebar-frametime-profiler/",
+        desc: {
+          pt: "Auditor de barramento PCIe, interrupções MSI e Resizable BAR (SAM), e analisador de traces PresentMon para cálculo de 1% / 0.1% Low FPS e micro-stuttering.",
+          en: "PCIe bandwidth, MSI interrupt & Resizable BAR auditor, plus a PresentMon frame-time profiler computing 1% / 0.1% Low FPS and frame-pacing jitter.",
+          fr: "Auditeur de bus PCIe et Resizable BAR (SAM), et analyseur de frame-time PresentMon (1% / 0.1% Low FPS et micro-stuttering)."
+        }
+      },
+      {
+        cat: "labs",
+        title: "Motorcycle Trackday Telemetry & Pit-Lane Setup Analyzer",
+        tags: ["Python", "IMU/GPS Telemetry", "Thermodynamics", "Physics"],
+        repo: "https://github.com/hipolitopeedro/moto-trackday-telemetry-analyzer",
+        demo: "https://hipolitopeedro.github.io/moto-trackday-telemetry-analyzer/",
+        desc: {
+          pt: "Analisador de telemetria GPS/IMU de trackday (velocidade de apex, lean angle e frenagem) e calculadora de box (pressão fria/quente de pneus, Sag de suspensão e relação coroa/pinhão).",
+          en: "Motorcycle trackday GPS/IMU lap telemetry analyzer and pit-lane setup calculator (tire pressure thermodynamics, suspension sag, and sprocket gearing simulator).",
+          fr: "Analyseur de télémétrie GPS/IMU sur circuit moto et calculateur de réglages (pression thermique des pneus, Sag de suspension et démultiplication)."
+        }
+      },
+      {
+        cat: "labs",
+        title: "Turbocharged Engine Sizing & ECU Datalog Auditor",
+        tags: ["Python", "Thermodynamics", "ECU Datalog", "Airflow"],
+        repo: "https://github.com/hipolitopeedro/turbo-engine-boost-toolkit",
+        demo: "https://hipolitopeedro.github.io/turbo-engine-boost-toolkit/",
+        desc: {
+          pt: "Calculadora termodinâmica de fluxo de ar de turbina (MAF lb/min) e vazão de bicos injetores (Etanol/Gasolina) + auditor de segurança de datalogs WOT (Lambda, IDC e Overboost).",
+          en: "Turbocharger mass airflow & fuel injector sizing calculator (Ethanol E100 / Gasoline) and automated WOT ECU datalog safety auditor.",
+          fr: "Calculateur thermodynamique de débit d'air turbo et d'injecteurs + auditeur de sécurité de datalogs ECU (Lambda, Duty Cycle et Overboost)."
+        }
+      }
+    ];
+
+    let currentLang = 'pt';
+    let currentFilter = 'cloud';
+
+    function setLang(lang) {
+      currentLang = lang;
+      ['pt', 'en', 'fr'].forEach(l => {
+        const btn = document.getElementById('lang-' + l);
+        btn.className = l === lang
+          ? 'px-2.5 py-1 rounded bg-sky-500 text-slate-950 font-bold transition'
+          : 'px-2.5 py-1 rounded text-slate-400 hover:text-white transition';
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key]) {
+          el.textContent = i18n[lang][key];
+        }
+      });
+
+      renderProjects();
+    }
+
+    function filterProjects(cat) {
+      currentFilter = cat;
+      ['cloud', 'app', 'labs', 'all'].forEach(c => {
+        const btn = document.getElementById('tab-' + c);
+        btn.className = c === cat
+          ? 'px-3 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-bold transition'
+          : 'px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition';
+      });
+      renderProjects();
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const list = currentFilter === 'all' ? projects : projects.filter(p => p.cat === currentFilter);
+
+      const badgeLabel = {
+        cloud: { pt: 'CLOUD & INFRA', en: 'CLOUD & INFRA', fr: 'CLOUD & INFRA' },
+        app:   { pt: 'FULL-STACK & EMBEDDED', en: 'FULL-STACK & EMBEDDED', fr: 'FULL-STACK & EMBARQUÉ' },
+        labs:  { pt: 'ENGINEERING LAB', en: 'ENGINEERING LAB', fr: 'LAB D\'INGÉNIERIE' }
+      };
+
+      grid.innerHTML = list.map(p => {
+        const tagsHtml = p.tags.map(t => `<span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-[11px] font-mono text-slate-300">${t}</span>`).join('');
+        const demoBtn = p.demo
+          ? `<a href="${p.demo}" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 font-mono text-xs font-semibold transition">● Live Demo / App ↗</a>`
+          : '';
+
+        return `
+          <article class="eng-card p-5 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                  ${badgeLabel[p.cat][currentLang]}
+                </span>
+                ${p.demo ? '<span class="w-2 h-2 rounded-full bg-emerald-400" title="Interactive Web Simulator Available"></span>' : ''}
+              </div>
+              <h3 class="text-base font-bold text-white leading-snug">${p.title}</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">${p.desc[currentLang]}</p>
+            </div>
+
+            <div class="space-y-3 pt-2 border-t border-slate-800/80">
+              <div class="flex flex-wrap gap-1.5">${tagsHtml}</div>
+              <div class="flex items-center gap-2 pt-1">
+                <a href="${p.repo}" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs transition">
+                  Source Code ↗
+                </a>
+                ${demoBtn}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProjects();
+    });
+  </script>
+</body>
+</html>
