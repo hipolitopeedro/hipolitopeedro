@@ -81,6 +81,7 @@
 - **[ad-windows-sysadmin-toolkit](https://github.com/hipolitopeedro/ad-windows-sysadmin-toolkit)** — PowerShell scripts for Active Directory & Windows Server administration (inactive user audits, bulk user provisioning, password expiration reports, and server health checks).
 - **[linux-infra-automation](https://github.com/hipolitopeedro/linux-infra-automation)** — Bash automation toolkit for Linux servers (system health auditing, automated backup & rotation with SHA-256 verification, and service auto-healing watchdog).
 - **[network-diagnostics-suite](https://github.com/hipolitopeedro/network-diagnostics-suite)** — Python & PowerShell tools for network connectivity sweeps, TCP port checks (DNS, LDAP, Kerberos, SMB, HTTPS), and infrastructure troubleshooting.
+- **[optiplex-homelab-stack](https://github.com/hipolitopeedro/optiplex-homelab-stack)** — Containerized Home Server infrastructure (`Docker Compose` & Bash) built for a Dell OptiPlex (Core i5-3470, 8GB DDR3, 3TB HDD): network-wide DNS Adblocker (Pi-hole), Gigabit LAN NAS file server (Samba SMB3 & FileBrowser), automated local 3TB backup rotation with SHA-256 verification, and `S.M.A.R.T.` disk health auditing.
 
 ---
 
