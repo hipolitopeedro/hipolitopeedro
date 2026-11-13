@@ -4,14 +4,15 @@
 
 ### IT Infrastructure, Cloud Computing & Automation | Computer Science Student
 ### Infraestrutura de TI, Cloud & Automação | Estudante de Ciência da Computação
+### Infrastructure IT, Cloud AWS & Automatisation | Étudiant en Informatique
 
 ---
 
-## About Me / Sobre Mim
+## About Me / Sobre Mim / À Propos
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="33%" valign="top">
 
 ### English
 - **IT Infrastructure Intern** at **Atex do Brasil**.
@@ -20,13 +21,22 @@
 - Developing **infrastructure & backup automations** using **PowerShell**, **Bash**, **Python (Boto3)**, and **AWS CLI** to ensure data resilience, security, and operational efficiency.
 
 </td>
-<td width="50%" valign="top">
+<td width="33%" valign="top">
 
 ### Português
 - **Estagiário de Infraestrutura de TI** na **Atex do Brasil**.
-- Estudante de **Ciência da Computação** no **Centro Universitário Dom Helder Câmara** (BH - MG).
+- Estudante de **Ciência da Computação** na **Escola Superior Dom Helder Câmara** (BH - MG).
 - Atuação prática com **Windows Server**, **Active Directory (AD)**, **Linux**, **Redes** e **AWS Cloud (Amazon S3 & Rotinas de Backup Corporativo)**.
 - Desenvolvendo **automações de infraestrutura e backup** com **PowerShell**, **Bash**, **Python (Boto3)** e **AWS CLI** com foco em resiliência de dados, segurança e eficiência operacional.
+
+</td>
+<td width="33%" valign="top">
+
+### Français
+- **Stagiaire en Infrastructure IT** chez **Atex do Brasil**.
+- Étudiant en **Informatique (Licence / Bachelor)** à **Dom Helder Câmara** (Belo Horizonte, Brésil).
+- Expérience pratique avec **Windows Server**, **Active Directory (AD)**, **Linux**, **Réseaux** et **AWS Cloud (Amazon S3 & Sauvegardes d'entreprise)**.
+- Développement d'**automatisations d'infrastructure et de sauvegarde** avec **PowerShell**, **Bash**, **Python (Boto3)** et **AWS CLI** pour garantir la résilience des données, la sécurité et l'efficacité opérationnelle.
 
 </td>
 </tr>
@@ -34,9 +44,9 @@
 
 ---
 
-## Skills & Technologies / Tecnologias
+## Skills & Technologies / Tecnologias / Compétences
 
-**Cloud & Infrastructure / Cloud, Sistemas e Redes**
+**Cloud & Infrastructure / Cloud, Sistemas e Redes / Systèmes & Réseaux**
 
 ![AWS](https://img.shields.io/badge/Amazon_AWS_%26_S3-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Windows Server](https://img.shields.io/badge/Windows%20Server-0078D6?style=for-the-badge&logo=windows&logoColor=white)
@@ -44,7 +54,7 @@
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Networking](https://img.shields.io/badge/Networking%20%26%20TCP%2FIP-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white)
 
-**Automation, IaC & Scripting / Automação e IaC**
+**Automation, IaC & Scripting / Automação e IaC / Automatisation**
 
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash%20%2F%20Shell-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
@@ -55,7 +65,7 @@
 
 ---
 
-## Languages / Idiomas
+## Languages / Idiomas / Langues
 
 ![Portuguese](https://img.shields.io/badge/Portugu%C3%AAs-Nativo%20%2F%20Native-009c3b?style=for-the-badge)
 ![English](https://img.shields.io/badge/English-Fluent%20%2F%20Advanced-00247d?style=for-the-badge)
@@ -63,7 +73,7 @@
 
 ---
 
-## Featured Projects / Projetos de Cloud & Infraestrutura
+## Featured Projects / Projetos de Cloud & Infraestrutura / Projets Cloud & Infra
 
 - **[aws-s3-enterprise-backup](https://github.com/hipolitopeedro/aws-s3-enterprise-backup)** — Enterprise backup automation & storage lifecycle management for **Amazon S3** using PowerShell, Bash, and Python (`boto3`): automated Windows Server & Linux backups to S3, SHA-256 integrity manifests, SLA freshness verifier, anti-ransomware IAM policies, and Glacier Deep Archive lifecycle rules.
 - **[aws-cloud-automation-boto3](https://github.com/hipolitopeedro/aws-cloud-automation-boto3)** — AWS Cloud administration, security auditing, and FinOps automation using Python (`boto3`) and AWS CLI (EBS snapshot lifecycle manager, S3 public access & encryption auditor, IAM credential age/MFA check, and unused resource inventory).
@@ -74,7 +84,7 @@
 
 ---
 
-## Contact / Onde me encontrar
+## Contact / Onde me encontrar / Me contacter
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Pedro%20Hip%C3%B3lito-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pedro-hipólito-912511292/)
 [![Gmail](https://img.shields.io/badge/Gmail-pedro.hipolito1203%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pedro.hipolito1203@gmail.com)
