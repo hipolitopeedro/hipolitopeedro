@@ -233,25 +233,44 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Work Experience -->
-        <div class="eng-card p-6 space-y-4">
-          <div class="flex items-start justify-between gap-2">
-            <div>
-              <span class="font-mono text-xs text-emerald-400 uppercase" data-i18n="exp_badge">Experiência Profissional</span>
-              <h3 class="text-lg font-bold text-white mt-0.5" data-i18n="exp_role">Infraestrutura de TI, Cloud &amp; Segurança (Estágio)</h3>
-              <p class="text-sm font-medium text-sky-400">Atex do Brasil</p>
+        <!-- Work Experience Timeline -->
+        <div class="space-y-5">
+          <!-- Atex do Brasil -->
+          <div class="eng-card p-6 space-y-4">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <span class="font-mono text-xs text-emerald-400 uppercase" data-i18n="exp_badge">Experiência Atual</span>
+                <h3 class="text-lg font-bold text-white mt-0.5" data-i18n="exp_role">Infraestrutura de TI, Cloud &amp; Segurança (Estágio)</h3>
+                <p class="text-sm font-medium text-sky-400">Atex do Brasil</p>
+              </div>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-300" data-i18n="exp_date">Presente</span>
             </div>
-            <span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300" data-i18n="exp_date">Presente</span>
+            <ul class="space-y-2 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+              <li data-i18n="exp_b1">AWS Cloud &amp; Backups: Gerenciamento e automação de rotinas de backup corporativo no Amazon S3 com retenção, segurança e verificação de integridade.</li>
+              <li data-i18n="exp_b2">Infraestrutura de IA &amp; Containers: Provisionamento e manutenção de VPS dedicadas por usuário para cargas de Inteligência Artificial utilizando Docker e ambientes PHP.</li>
+              <li data-i18n="exp_b3">Segurança de Rede &amp; Servidores: Administração de toda a malha de segurança Kaspersky na rede, gerência do Firewall S4 e sustentação/hardening de Windows Server 2008 e Active Directory.</li>
+            </ul>
           </div>
-          <ul class="space-y-2 text-sm text-slate-300 list-disc list-inside leading-relaxed">
-            <li data-i18n="exp_b1">AWS Cloud &amp; Backups: Gerenciamento e automação de rotinas de backup corporativo no Amazon S3 com retenção, segurança e verificação de integridade.</li>
-            <li data-i18n="exp_b2">Infraestrutura de IA &amp; Containers: Provisionamento e manutenção de VPS dedicadas por usuário para cargas de Inteligência Artificial utilizando Docker e ambientes PHP.</li>
-            <li data-i18n="exp_b3">Segurança de Rede &amp; Servidores: Administração de toda a malha de segurança Kaspersky na rede, gerência do Firewall S4 e sustentação/hardening de Windows Server 2008 e Active Directory.</li>
-          </ul>
+
+          <!-- Brazilian Army -->
+          <div class="eng-card p-6 space-y-3">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <span class="font-mono text-xs text-slate-400 uppercase" data-i18n="exp2_badge">Experiência Anterior</span>
+                <h3 class="text-base font-bold text-white mt-0.5" data-i18n="exp2_role">Soldado de Infantaria &amp; Auxiliar de TI (N1 / N2)</h3>
+                <p class="text-sm font-medium text-sky-400" data-i18n="exp2_org">Exército Brasileiro</p>
+              </div>
+              <span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400" data-i18n="exp2_date">Concluído</span>
+            </div>
+            <ul class="space-y-1.5 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+              <li data-i18n="exp2_b1">Atuação no suporte técnico de TI Nível 1 (N1) com escalonamento e resolução de chamados Nível 2 (N2).</li>
+              <li data-i18n="exp2_b2">Manutenção de hardware e estações de trabalho, configuração de rede local e apoio à infraestrutura interna sob alto padrão de disciplina operacional.</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Academic Education -->
-        <div class="eng-card p-6 space-y-4">
+        <div class="eng-card p-6 space-y-4 h-fit">
           <div class="flex items-start justify-between gap-2">
             <div>
               <span class="font-mono text-xs text-purple-400 uppercase" data-i18n="edu_badge">Formação Acadêmica</span>
@@ -376,12 +395,18 @@
         lang_en: "Fluente / Avançado",
         lang_fr: "Em aprendizado (Projeto Imersão Lyon)",
         sec_exp_num: "02 / EXPERIÊNCIA & FORMAÇÃO",
-        exp_badge: "Experiência Profissional",
+        exp_badge: "Experiência Atual",
         exp_role: "Infraestrutura de TI, Cloud & Segurança (Estágio)",
         exp_date: "Presente",
         exp_b1: "AWS Cloud & Backups: Gerenciamento e automação de rotinas de backup corporativo no Amazon S3 com retenção, segurança e verificação de integridade.",
         exp_b2: "Infraestrutura de IA & Containers: Provisionamento e manutenção de VPS dedicadas por usuário para cargas de Inteligência Artificial utilizando Docker e ambientes PHP.",
         exp_b3: "Segurança de Rede & Servidores: Administração de toda a malha de segurança Kaspersky na rede, gerência do Firewall S4 e sustentação/hardening de Windows Server 2008 e Active Directory.",
+        exp2_badge: "Experiência Anterior",
+        exp2_role: "Soldado de Infantaria & Auxiliar de TI (N1 / N2)",
+        exp2_org: "Exército Brasileiro",
+        exp2_date: "Concluído",
+        exp2_b1: "Atuação no suporte técnico de TI Nível 1 (N1) com escalonamento e resolução de chamados Nível 2 (N2).",
+        exp2_b2: "Manutenção de hardware e estações de trabalho, configuração de rede local e apoio à infraestrutura interna sob alto padrão de disciplina operacional.",
         edu_badge: "Formação Acadêmica",
         edu_degree: "Bacharelado em Ciência da Computação",
         edu_date: "Em andamento",
@@ -417,12 +442,18 @@
         lang_en: "Fluent / Advanced",
         lang_fr: "Learning (Upcoming Immersion in Lyon, France)",
         sec_exp_num: "02 / EXPERIENCE & EDUCATION",
-        exp_badge: "Professional Experience",
+        exp_badge: "Current Experience",
         exp_role: "IT Infrastructure, Cloud & Security Intern",
         exp_date: "Present",
         exp_b1: "AWS Cloud & Backups: Management and automation of enterprise backup pipelines on Amazon S3 with lifecycle policies and integrity checks.",
         exp_b2: "AI VPS & Containers: Provisioning and maintenance of dedicated per-user VPS instances for AI workloads using Docker and PHP.",
         exp_b3: "Network Security & Servers: Administration of the corporate Kaspersky security mesh, S4 Firewall rules, and legacy Windows Server 2008 / Active Directory hardening.",
+        exp2_badge: "Previous Experience",
+        exp2_role: "Infantry Soldier & IT Assistant (L1 / L2 Support)",
+        exp2_org: "Brazilian Army (Exército Brasileiro)",
+        exp2_date: "Completed",
+        exp2_b1: "Provided Tier 1 (L1) technical support and escalated/resolved Tier 2 (L2) infrastructure and workstation incidents.",
+        exp2_b2: "Performed hardware maintenance, workstation deployment, and local network troubleshooting under strict operational discipline.",
         edu_badge: "Education",
         edu_degree: "B.Sc. in Computer Science",
         edu_date: "In Progress",
@@ -458,12 +489,18 @@
         lang_en: "Courant / Avancé",
         lang_fr: "En apprentissage (Projet d'immersion à Lyon, France)",
         sec_exp_num: "02 / EXPÉRIENCE & FORMATION",
-        exp_badge: "Expérience Professionnelle",
+        exp_badge: "Expérience Actuelle",
         exp_role: "Stagiaire Infrastructure IT, Cloud & Sécurité",
         exp_date: "Présent",
         exp_b1: "Cloud AWS & Sauvegardes : Gestion et automatisation des sauvegardes d'entreprise sur Amazon S3 avec politiques de rétention et contrôle d'intégrité.",
         exp_b2: "Infrastructure VPS IA & Docker : Déploiement et maintenance de VPS isolées par utilisateur pour des charges d'Intelligence Artificielle sous Docker et PHP.",
         exp_b3: "Sécurité Réseau & Serveurs : Administration de la sécurité Kaspersky sur tout le réseau, gestion du pare-feu S4 et maintien sécurisé de Windows Server 2008 & Active Directory.",
+        exp2_badge: "Expérience Précédente",
+        exp2_role: "Soldat d'Infanterie & Assistant IT (Support N1 / N2)",
+        exp2_org: "Armée Brésilienne (Exército Brasileiro)",
+        exp2_date: "Terminé",
+        exp2_b1: "Support technique informatique de niveau 1 (N1) avec escalade et résolution d'incidents de niveau 2 (N2).",
+        exp2_b2: "Maintenance matérielle, préparation des postes de travail et dépannage réseau local dans un environnement à forte rigueur opérationnelle.",
         edu_badge: "Formation Académique",
         edu_degree: "Licence / Bachelor en Informatique",
         edu_date: "En cours",
