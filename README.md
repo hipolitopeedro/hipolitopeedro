@@ -2,41 +2,43 @@
 
 # Pedro Hipólito
 
-### IT Infrastructure, Cloud AWS, Network Security & AI VPS | Computer Science Student
 ### Infraestrutura de TI, Cloud AWS, Segurança & VPS para IA | Estudante de Ciência da Computação
+### IT Infrastructure, Cloud AWS, Network Security & AI VPS | Computer Science Student
 ### Infrastructure IT, Cloud AWS, Sécurité Réseau & VPS IA | Étudiant en Informatique
 
 ---
 
-## About Me / Sobre Mim / À Propos
+## Sobre Mim / About Me / À Propos
 
 <table>
 <tr>
-<td width="33%" valign="top">
+<td width="50%" valign="top">
 
-### English
-- **IT Infrastructure & Cloud Intern** at **Atex do Brasil** | Former **Infantry Soldier & IT Assistant (L1/L2 Support)** in the **Brazilian Army**.
-- Pursuing a B.Sc. in **Computer Science** at **Dom Helder Câmara** (Belo Horizonte, Brazil).
-- Hands-on experience managing **AWS Cloud (Amazon S3 & corporate backups)**, **per-user AI infrastructure on VPS with Docker**, **PHP** environments, **Kaspersky** network-wide endpoint security, **S4 Firewall**, and **Windows Server (including legacy 2008 environments & Active Directory)**.
-- Developing **infrastructure, security, and backup automations** using **PowerShell**, **Bash**, **Python (Boto3)**, and **Docker**.
-
-</td>
-<td width="33%" valign="top">
-
-### Português
+### 🇧🇷 Português
 - **Estagiário de Infraestrutura de TI & Cloud** na **Atex do Brasil** | Ex-**Soldado de Infantaria & Auxiliar de TI (Suporte N1/N2)** no **Exército Brasileiro**.
 - Estudante de **Ciência da Computação** na **Escola Superior Dom Helder Câmara** (BH - MG).
 - Atuação prática com **AWS Cloud (Amazon S3 & backups corporativos)**, **infraestrutura para IA em VPS dedicadas por usuário**, **Docker**, ambientes **PHP**, toda a malha de segurança **Kaspersky**, **Firewall S4** e **Windows Server (incluindo sustentação de Windows Server 2008 e Active Directory)**.
 - Desenvolvendo **automações de infraestrutura, segurança e backup** com **PowerShell**, **Bash**, **Python (Boto3)** e **Docker**.
 
 </td>
-<td width="33%" valign="top">
+<td width="50%" valign="top">
 
-### Français
-- **Stagiaire en Infrastructure IT & Cloud** chez **Atex do Brasil** | Ancien **Soldat d'Infanterie & Assistant IT (Support N1/N2)** dans l'**Armée Brésilienne**.
-- Étudiant en **Informatique (Licence / Bachelor)** à **Dom Helder Câmara** (Belo Horizonte, Brésil).
-- Expérience pratique avec **AWS Cloud (Amazon S3 & sauvegardes)**, **infrastructure IA sur VPS dédiées par utilisateur**, **Docker**, environnements **PHP**, sécurité réseau **Kaspersky**, **Pare-feu S4** et **Windows Server (dont le maintien de Windows Server 2008 et Active Directory)**.
-- Développement d'**automatisations d'infrastructure et de sauvegarde** via **PowerShell**, **Bash**, **Python (Boto3)** et **Docker**.
+### 🇺🇸 English
+- **IT Infrastructure & Cloud Intern** at **Atex do Brasil** | Former **Infantry Soldier & IT Assistant (L1/L2 Support)** in the **Brazilian Army**.
+- Pursuing a B.Sc. in **Computer Science** at **Dom Helder Câmara** (Belo Horizonte, Brazil).
+- Hands-on experience managing **AWS Cloud (Amazon S3 & corporate backups)**, **per-user AI infrastructure on VPS with Docker**, **PHP** environments, **Kaspersky** network-wide endpoint security, **S4 Firewall**, and **Windows Server (including legacy 2008 environments & Active Directory)**.
+- Developing **infrastructure, security, and backup automations** using **PowerShell**, **Bash**, **Python (Boto3)**, and **Docker**.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center" valign="top">
+
+### 🇫🇷 Français
+• **Stagiaire en Infrastructure IT & Cloud** chez **Atex do Brasil** | Ancien **Soldat d'Infanterie & Assistant IT (Support N1/N2)** dans l'**Armée Brésilienne**.<br>
+• Étudiant en **Informatique (Licence / Bachelor)** à **Dom Helder Câmara** (Belo Horizonte, Brésil).<br>
+• Expérience pratique avec **AWS Cloud (Amazon S3 & sauvegardes)**, **infrastructure IA sur VPS dédiées par utilisateur**, **Docker**, environnements **PHP**, sécurité réseau **Kaspersky**, **Pare-feu S4** et **Windows Server (dont le maintien de Windows Server 2008 et Active Directory)**.<br>
+• Développement d'**automatisations d'infrastructure et de sauvegarde** via **PowerShell**, **Bash**, **Python (Boto3)** et **Docker**.
 
 </td>
 </tr>
