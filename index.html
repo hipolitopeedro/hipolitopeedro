@@ -262,6 +262,42 @@
       border-color: rgba(190, 235, 255, 0.75);
       box-shadow: 0 0 10px rgba(86, 195, 255, 0.5);
     }
+
+    /* Taskbar System Tray Language Buttons */
+    .tray-lang-btn {
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(224, 242, 254, 0.8);
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .tray-lang-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(186, 230, 253, 0.45);
+    }
+    .tray-lang-btn-active {
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(180deg, #6ec8ff 0%, #1d8ae0 50%, #0d6cbd 51%, #38a3f5 100%);
+      border: 1px solid rgba(186, 230, 253, 0.85);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    }
+
+    /* Windows 7 Tray Language Flyout Popup Menu */
+    .win7-tray-flyout {
+      background: linear-gradient(160deg, rgba(235, 247, 255, 0.95) 0%, rgba(205, 232, 252, 0.92) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 28px rgba(4, 24, 48, 0.55), 0 0 0 1px rgba(25, 75, 125, 0.55);
+      border-radius: 7px;
+      padding: 5px;
+      color: #0f2942;
+    }
   </style>
 </head>
 <body class="min-h-screen pb-24 relative">
@@ -301,12 +337,12 @@
             <span class="text-slate-400">▸</span>
             <span class="text-emerald-700 font-semibold" data-i18n="addr_leaf">Cloud AWS, Segurança &amp; VPS para IA</span>
           </div>
-          <span class="text-[11px] text-slate-400 font-mono hidden md:inline">C:\Users\PedroHipolito\Portfolio</span>
+          <span class="text-[11px] text-slate-400 font-mono hidden md:inline" data-i18n="addr_path">C:\Users\PedroHipolito\Portfolio</span>
         </div>
 
         <!-- Glossy Language Switcher (PT | EN | FR) -->
         <div class="flex items-center gap-1 bg-white/75 px-2 py-1 rounded border border-[#7da2ce] shadow-sm">
-          <span class="text-[11px] font-semibold text-slate-600 mr-1">🌐 Idioma:</span>
+          <span class="text-[11px] font-semibold text-slate-600 mr-1" data-i18n="lang_label">🌐 Idioma:</span>
           <button onclick="setLang('pt')" id="lang-pt" class="aero-btn aero-btn-primary !px-2.5 !py-0.5 !text-xs">PT-BR</button>
           <button onclick="setLang('en')" id="lang-en" class="aero-btn !px-2.5 !py-0.5 !text-xs">EN</button>
           <button onclick="setLang('fr')" id="lang-fr" class="aero-btn !px-2.5 !py-0.5 !text-xs">FR</button>
@@ -337,7 +373,7 @@
                 <p class="text-sm sm:text-base font-semibold text-[#1565c0]" data-i18n="hero_subtitle">
                   Infraestrutura de TI, Cloud AWS, Segurança de Rede &amp; VPS para IA
                 </p>
-                <p class="text-xs text-slate-600 mt-0.5">
+                <p class="text-xs text-slate-600 mt-0.5" data-i18n="hero_org_edu">
                   Atex do Brasil • Ciência da Computação (Dom Helder Câmara)
                 </p>
               </div>
@@ -368,14 +404,14 @@
                   <span class="w-3 h-3 rounded-full bg-gradient-to-b from-lime-300 to-green-600 border border-white shadow"></span>
                   <span class="text-xs font-bold text-[#0b355e]" data-i18n="gadget_title">Monitor de Recursos e Segurança (Atex &amp; Labs)</span>
                 </div>
-                <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">ONLINE</span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300" data-i18n="gadget_status">ONLINE</span>
               </div>
 
               <!-- Progress Bar 1 -->
               <div class="space-y-1">
-                <div class="flex justify-between text-xs">
-                  <span class="font-semibold text-slate-700">Amazon S3 Backups &amp; Glacier SLA</span>
-                  <span class="font-mono font-bold text-emerald-700">100% Íntegro (SHA-256)</span>
+                <div class="flex justify-between text-xs gap-2">
+                  <span class="font-semibold text-slate-700" data-i18n="gadget_b1_label">Backups Amazon S3 &amp; Glacier SLA</span>
+                  <span class="font-mono font-bold text-emerald-700 shrink-0" data-i18n="gadget_b1_val">100% Íntegro (SHA-256)</span>
                 </div>
                 <div class="win7-progress-track">
                   <div class="win7-progress-fill" style="width: 96%"></div>
@@ -384,9 +420,9 @@
 
               <!-- Progress Bar 2 -->
               <div class="space-y-1">
-                <div class="flex justify-between text-xs">
-                  <span class="font-semibold text-slate-700">Infra VPS para IA (Docker por Usuário)</span>
-                  <span class="font-mono font-bold text-sky-800">Containers Isolados</span>
+                <div class="flex justify-between text-xs gap-2">
+                  <span class="font-semibold text-slate-700" data-i18n="gadget_b2_label">Infra VPS para IA (Docker por Usuário)</span>
+                  <span class="font-mono font-bold text-sky-800 shrink-0" data-i18n="gadget_b2_val">Containers Isolados</span>
                 </div>
                 <div class="win7-progress-track">
                   <div class="win7-progress-fill" style="width: 88%"></div>
@@ -395,9 +431,9 @@
 
               <!-- Progress Bar 3 -->
               <div class="space-y-1">
-                <div class="flex justify-between text-xs">
-                  <span class="font-semibold text-slate-700">Kaspersky Endpoint + Firewall S4 + WinSrv 2008</span>
-                  <span class="font-mono font-bold text-emerald-700">Proteção Ativa</span>
+                <div class="flex justify-between text-xs gap-2">
+                  <span class="font-semibold text-slate-700" data-i18n="gadget_b3_label">Kaspersky Endpoint + Firewall S4 + WinSrv 2008</span>
+                  <span class="font-mono font-bold text-emerald-700 shrink-0" data-i18n="gadget_b3_val">Proteção Ativa</span>
                 </div>
                 <div class="win7-progress-track">
                   <div class="win7-progress-fill" style="width: 94%"></div>
@@ -406,7 +442,7 @@
 
               <div class="pt-1 flex items-center justify-between text-xs border-t border-sky-200/80">
                 <span class="text-slate-600 font-medium" data-i18n="gadget_footer">8 Simuladores Web Interativos hospedados</span>
-                <a href="#projects" class="aero-btn aero-btn-green !py-1 !px-2.5 !text-xs">Abrir Labs →</a>
+                <a href="#projects" class="aero-btn aero-btn-green !py-1 !px-2.5 !text-xs" data-i18n="gadget_btn">Abrir Labs →</a>
               </div>
             </div>
           </div>
@@ -457,15 +493,15 @@
               </h3>
               <div class="space-y-2 text-xs">
                 <div class="flex items-center justify-between py-1 border-b border-slate-200">
-                  <span class="font-bold text-slate-800">Português</span>
+                  <span class="font-bold text-slate-800" data-i18n="lang_name_pt">Português</span>
                   <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold border border-emerald-300" data-i18n="lang_pt">Nativo</span>
                 </div>
                 <div class="flex items-center justify-between py-1 border-b border-slate-200">
-                  <span class="font-bold text-slate-800">English</span>
+                  <span class="font-bold text-slate-800" data-i18n="lang_name_en">Inglês</span>
                   <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-semibold border border-sky-300" data-i18n="lang_en">Fluente / Avançado</span>
                 </div>
                 <div class="flex items-center justify-between py-1">
-                  <span class="font-bold text-slate-800">Français</span>
+                  <span class="font-bold text-slate-800" data-i18n="lang_name_fr">Francês</span>
                   <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 font-semibold border border-indigo-300" data-i18n="lang_fr">Em aprendizado (Lyon)</span>
                 </div>
               </div>
@@ -581,7 +617,7 @@
       <div class="flex items-center justify-between px-2 pb-1.5 pt-1">
         <div class="flex items-center gap-2">
           <span class="w-4 h-4 rounded-full bg-gradient-to-b from-sky-200 via-blue-500 to-indigo-800 border border-white shadow-sm inline-block"></span>
-          <span class="text-xs font-semibold text-slate-900 drop-shadow-[0_0_6px_rgba(255,255,255,0.95)]">
+          <span class="text-xs font-semibold text-slate-900 drop-shadow-[0_0_6px_rgba(255,255,255,0.95)]" data-i18n="win4_title">
             Propriedades de Tecnologias &amp; Contato Direto
           </span>
         </div>
@@ -595,7 +631,7 @@
       <div id="contact" class="win7-body p-5 sm:p-7 space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="aero-card p-4 space-y-2.5">
-            <h3 class="text-xs font-bold uppercase text-[#1565c0] border-b border-sky-200 pb-1">☁️ Cloud, VPS &amp; Segurança</h3>
+            <h3 class="text-xs font-bold uppercase text-[#1565c0] border-b border-sky-200 pb-1" data-i18n="stack_c1_title">☁️ Cloud, VPS &amp; Segurança</h3>
             <div class="flex flex-wrap gap-1.5 text-xs font-semibold text-slate-700">
               <span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-300 text-sky-900">AWS (Amazon S3 / EC2 / IAM / VPC)</span>
               <span class="px-2 py-0.5 rounded bg-emerald-100 border border-emerald-300 text-emerald-900">Kaspersky Endpoint Security</span>
@@ -606,7 +642,7 @@
           </div>
 
           <div class="aero-card p-4 space-y-2.5">
-            <h3 class="text-xs font-bold uppercase text-emerald-700 border-b border-sky-200 pb-1">🐳 Containers, Automação &amp; Backend</h3>
+            <h3 class="text-xs font-bold uppercase text-emerald-700 border-b border-sky-200 pb-1" data-i18n="stack_c2_title">🐳 Containers, Automação &amp; Backend</h3>
             <div class="flex flex-wrap gap-1.5 text-xs font-semibold text-slate-700">
               <span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-300 text-sky-900">Docker &amp; Docker Compose</span>
               <span class="px-2 py-0.5 rounded bg-indigo-100 border border-indigo-300 text-indigo-900">PHP</span>
@@ -617,7 +653,7 @@
           </div>
 
           <div class="aero-card p-4 space-y-2.5">
-            <h3 class="text-xs font-bold uppercase text-indigo-700 border-b border-sky-200 pb-1">🔧 Hardware, Redes &amp; Embarcados</h3>
+            <h3 class="text-xs font-bold uppercase text-indigo-700 border-b border-sky-200 pb-1" data-i18n="stack_c3_title">🔧 Hardware, Redes &amp; Embarcados</h3>
             <div class="flex flex-wrap gap-1.5 text-xs font-semibold text-slate-700">
               <span class="px-2 py-0.5 rounded bg-teal-100 border border-teal-300 text-teal-900">C / C++ (Arduino Embedded)</span>
               <span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-300 text-sky-900">React 19 &amp; Tailwind CSS</span>
@@ -682,12 +718,38 @@
       </div>
     </div>
 
-    <!-- Right: System Tray (Language Indicator + Network Icon + Live Clock + Aero Peek Bar) -->
-    <div class="flex items-center gap-3 text-white text-xs">
-      <div class="flex items-center gap-1.5 bg-black/25 px-2.5 py-1 rounded border border-white/20">
-        <span title="AWS & LAN Connected">🌐</span>
-        <span title="Kaspersky & Firewall S4 Active">🛡️</span>
-        <span class="font-mono font-bold text-sky-200" id="trayLangCode">PT-BR</span>
+    <!-- Right: System Tray (Interactive Language Switcher + Network/Security Icons + Live Clock + Aero Peek) -->
+    <div class="flex items-center gap-2.5 text-white text-xs relative">
+
+      <!-- Windows 7 Language Bar Pop-up Flyout (Opens when clicking 🌐) -->
+      <div id="trayLangFlyout" class="win7-tray-flyout hidden absolute bottom-12 right-16 w-56 z-50">
+        <div class="text-[11px] font-bold text-[#0b355e] px-2 py-1 border-b border-sky-300/80 mb-1" data-i18n="tray_flyout_title">
+          🌐 Barra de Idioma (Windows 7)
+        </div>
+        <button onclick="setLang('pt'); closeTrayFlyout();" class="w-full text-left px-2.5 py-1.5 rounded text-xs font-semibold hover:bg-sky-200/70 flex items-center justify-between">
+          <span>🇧🇷 PT-BR — Português (Brasil)</span>
+          <span id="check-pt" class="text-emerald-700 font-bold">✓</span>
+        </button>
+        <button onclick="setLang('en'); closeTrayFlyout();" class="w-full text-left px-2.5 py-1.5 rounded text-xs font-semibold hover:bg-sky-200/70 flex items-center justify-between">
+          <span>🇺🇸 EN — English (US)</span>
+          <span id="check-en" class="text-emerald-700 font-bold hidden">✓</span>
+        </button>
+        <button onclick="setLang('fr'); closeTrayFlyout();" class="w-full text-left px-2.5 py-1.5 rounded text-xs font-semibold hover:bg-sky-200/70 flex items-center justify-between">
+          <span>🇫🇷 FR — Français (France)</span>
+          <span id="check-fr" class="text-emerald-700 font-bold hidden">✓</span>
+        </button>
+      </div>
+
+      <!-- System Tray Box with Direct PT | EN | FR Language Switcher -->
+      <div class="flex items-center gap-1.5 bg-black/30 px-2 py-1 rounded border border-white/25 shadow-inner">
+        <button onclick="toggleTrayFlyout(event)" class="hover:scale-110 transition cursor-pointer" title="Abrir Menu de Idiomas / Rede AWS">🌐</button>
+        <span title="Kaspersky Endpoint & Firewall S4 Ativos">🛡️</span>
+        <span class="h-3.5 w-[1px] bg-white/25 mx-0.5"></span>
+        <div class="flex items-center gap-0.5" role="group" aria-label="Language Bar">
+          <button onclick="setLang('pt')" id="tray-lang-pt" class="tray-lang-btn tray-lang-btn-active" title="Português (Brasil)">PT</button>
+          <button onclick="setLang('en')" id="tray-lang-en" class="tray-lang-btn" title="English">EN</button>
+          <button onclick="setLang('fr')" id="tray-lang-fr" class="tray-lang-btn" title="Français">FR</button>
+        </div>
       </div>
 
       <div class="text-right leading-tight font-medium pr-2 border-r border-white/30">
@@ -703,28 +765,45 @@
   <script>
     const i18n = {
       pt: {
+        page_title: "Pedro Hipólito — Infraestrutura de TI, Cloud AWS & Segurança (Aero Edition)",
         win1_title: "Painel de Controle de Infraestrutura — Pedro Hipólito (Atex do Brasil & AWS Cloud)",
         win2_title: "Informações do Sistema e Trajetória Profissional — Sobre Mim & Experiência",
         win3_title: "Windows Explorer — Repositórios, Infraestrutura Cloud & Simuladores Interativos",
+        win4_title: "Propriedades de Tecnologias & Contato Direto",
         addr_root: "Computador",
         addr_leaf: "Cloud AWS, Segurança & VPS para IA",
-        nav_about: "Sobre Mim",
-        nav_exp: "Trajetória",
-        nav_proj: "Projetos & Labs",
-        nav_stack: "Tecnologias & Contato",
+        addr_path: "C:\\Users\\PedroHipolito\\Portfolio",
+        lang_label: "🌐 Idioma:",
+        tray_flyout_title: "🌐 Barra de Idioma (Windows 7)",
+        nav_about: "01 / Sobre",
+        nav_exp: "02 / Trajetória",
+        nav_proj: "03 / Projetos & Labs",
+        nav_stack: "04 / Tecnologias",
         hero_badge: "BELO HORIZONTE, MG • INFRAESTRUTURA DE TI, CLOUD AWS & SEGURANÇA",
         hero_subtitle: "Infraestrutura de TI, Cloud AWS, Segurança de Rede & VPS para IA",
+        hero_org_edu: "Atex do Brasil • Ciência da Computação (Dom Helder Câmara)",
         hero_desc: "Atuo na operação e automação de infraestrutura corporativa na Atex do Brasil: armazenamento e rotinas de backup no Amazon S3 (AWS), provisionamento de infraestrutura para IA em VPS dedicadas por usuário com Docker, ambientes PHP, gestão de segurança endpoint Kaspersky em toda a rede, Firewall S4 e servidores Windows Server (incluindo ambientes legados 2008) e Linux.",
         btn_explore: "📂 Explorar Projetos & Simuladores (15)",
         gadget_title: "Monitor de Recursos e Segurança (Atex & Labs)",
+        gadget_status: "ONLINE",
+        gadget_b1_label: "Backups Amazon S3 & Glacier SLA",
+        gadget_b1_val: "100% Íntegro (SHA-256)",
+        gadget_b2_label: "Infra VPS para IA (Docker por Usuário)",
+        gadget_b2_val: "Containers Isolados",
+        gadget_b3_label: "Kaspersky Endpoint + Firewall S4 + WinSrv 2008",
+        gadget_b3_val: "Proteção Ativa",
         gadget_footer: "8 Simuladores Web Interativos hospedados",
+        gadget_btn: "Abrir Labs →",
         sec_about_num: "01 / Sobre Mim & Atuação Técnica",
         about_p1: "Sou estudante de Ciência da Computação na Escola Superior Dom Helder Câmara (Belo Horizonte - MG) e atuo na área de Infraestrutura de TI e Cloud na Atex do Brasil. Trabalho mantendo ambientes híbridos, redes corporativas e servidores em operação contínua e segura.",
         about_p2: "No dia a dia na Atex, administro rotinas na AWS (especialmente backups corporativos no Amazon S3), infraestrutura dedicada para IA em VPS isoladas por usuário rodando em Docker, aplicações e ambientes em PHP, além de toda a malha de segurança endpoint Kaspersky, regras de Firewall S4 e sustentação/blindagem de Windows Server 2008 e Active Directory.",
         about_p3: "Fora do trabalho, gosto de explorar engenharia de hardware a fundo — desde arquitetura e telemetria de processadores/VRM até montagem de servidores domésticos (Homelab), sistemas embarcados em C/C++ e análise de telemetria física.",
         lang_title: "🌐 Idiomas & Imersão",
+        lang_name_pt: "Português",
         lang_pt: "Nativo",
+        lang_name_en: "Inglês",
         lang_en: "Fluente / Avançado",
+        lang_name_fr: "Francês",
         lang_fr: "Em aprendizado (Lyon)",
         sec_exp_num: "02 / Experiência Profissional & Formação Acadêmica",
         exp_badge: "Experiência Atual",
@@ -750,32 +829,54 @@
         tab_app: "💻 Full-Stack & Robótica (2)",
         tab_labs: "⚡ Hardware & Telemetry Labs (6)",
         tab_all: "📁 Todos (15)",
+        stack_c1_title: "☁️ Cloud, VPS & Segurança",
+        stack_c2_title: "🐳 Containers, Automação & Backend",
+        stack_c3_title: "🔧 Hardware, Redes & Embarcados",
         contact_title: "Vamos conversar?",
-        contact_desc: "Disponível para trocar ideias sobre Infraestrutura de TI, AWS Cloud, Segurança de Rede, Homelabs ou eventos de tecnologia (no Brasil ou em Lyon/França)."
+        contact_desc: "Disponível para trocar ideias sobre Infraestrutura de TI, AWS Cloud, Segurança de Rede, Homelabs ou eventos de tecnologia (no Brasil ou em Lyon/França).",
+        btn_source: "📂 Código-Fonte ↗",
+        btn_sim: "▶ Abrir Simulador ↗"
       },
       en: {
+        page_title: "Pedro Hipólito — IT Infrastructure, AWS Cloud & Security (Aero Edition)",
         win1_title: "Infrastructure Control Panel — Pedro Hipólito (Atex do Brasil & AWS Cloud)",
         win2_title: "System Information & Career Path — About Me & Experience",
         win3_title: "Windows Explorer — Repositories, Cloud Infrastructure & Live Simulators",
+        win4_title: "Technology Stack Properties & Direct Contact",
         addr_root: "Computer",
         addr_leaf: "AWS Cloud, Security & AI VPS",
-        nav_about: "About Me",
-        nav_exp: "Experience",
-        nav_proj: "Projects & Labs",
-        nav_stack: "Tech & Contact",
+        addr_path: "C:\\Users\\PedroHipolito\\Portfolio",
+        lang_label: "🌐 Language:",
+        tray_flyout_title: "🌐 Language Bar (Windows 7)",
+        nav_about: "01 / About",
+        nav_exp: "02 / Experience",
+        nav_proj: "03 / Projects & Labs",
+        nav_stack: "04 / Tech & Contact",
         hero_badge: "BELO HORIZONTE, BRAZIL • IT INFRASTRUCTURE, AWS CLOUD & SECURITY",
         hero_subtitle: "IT Infrastructure, AWS Cloud, Network Security & AI VPS",
+        hero_org_edu: "Atex do Brasil • B.Sc. in Computer Science (Dom Helder Câmara)",
         hero_desc: "Working on enterprise infrastructure operations at Atex do Brasil: Amazon S3 cloud backups, per-user isolated AI infrastructure on VPS using Docker, PHP environments, network-wide Kaspersky endpoint security, S4 Firewall, and Windows Server (including legacy 2008 hardening) & Linux.",
         btn_explore: "📂 Explore Projects & Live Demos (15)",
         gadget_title: "Resource & Security Monitor (Atex & Labs)",
+        gadget_status: "ONLINE",
+        gadget_b1_label: "Amazon S3 Backups & Glacier SLA",
+        gadget_b1_val: "100% Verified (SHA-256)",
+        gadget_b2_label: "AI VPS Infrastructure (Per-User Docker)",
+        gadget_b2_val: "Isolated Containers",
+        gadget_b3_label: "Kaspersky Endpoint + S4 Firewall + WinSrv 2008",
+        gadget_b3_val: "Active Protection",
         gadget_footer: "8 Interactive Web Simulators hosted",
+        gadget_btn: "Open Labs →",
         sec_about_num: "01 / About Me & Technical Focus",
         about_p1: "I am a Computer Science student at Escola Superior Dom Helder Câmara (Belo Horizonte, Brazil) and an IT Infrastructure & Cloud Intern at Atex do Brasil, focused on keeping hybrid server environments, corporate networks, and data pipelines secure and resilient.",
         about_p2: "In my daily role at Atex, I manage AWS Cloud storage (Amazon S3 corporate backups), per-user isolated VPS infrastructure for AI workloads using Docker, PHP environments, network-wide Kaspersky endpoint security, S4 Firewall rules, and Windows Server 2008 / Active Directory administration.",
         about_p3: "Beyond enterprise infrastructure, I enjoy low-level hardware engineering — from CPU/VRM telemetry modeling and self-hosted Homelab servers to C/C++ embedded robotics and motorsport physics telemetry.",
         lang_title: "🌐 Languages & Immersion",
+        lang_name_pt: "Portuguese",
         lang_pt: "Native",
+        lang_name_en: "English",
         lang_en: "Fluent / Advanced",
+        lang_name_fr: "French",
         lang_fr: "Learning (Lyon Immersion)",
         sec_exp_num: "02 / Professional Experience & Education",
         exp_badge: "Current Experience",
@@ -801,32 +902,54 @@
         tab_app: "💻 Full-Stack & Robotics (2)",
         tab_labs: "⚡ Hardware & Telemetry Labs (6)",
         tab_all: "📁 All (15)",
+        stack_c1_title: "☁️ Cloud, VPS & Security",
+        stack_c2_title: "🐳 Containers, Automation & Backend",
+        stack_c3_title: "🔧 Hardware, Networking & Embedded",
         contact_title: "Let's connect",
-        contact_desc: "Open to discussing IT Infrastructure, AWS Cloud, Network Security, Homelabs, or tech meetups in Brazil and Lyon/France."
+        contact_desc: "Open to discussing IT Infrastructure, AWS Cloud, Network Security, Homelabs, or tech meetups in Brazil and Lyon/France.",
+        btn_source: "📂 Source Code ↗",
+        btn_sim: "▶ Live Simulator ↗"
       },
       fr: {
+        page_title: "Pedro Hipólito — Infrastructure IT, Cloud AWS & Sécurité (Aero Edition)",
         win1_title: "Panneau de Configuration Infrastructure — Pedro Hipólito (Atex do Brasil & Cloud AWS)",
         win2_title: "Informations Système et Parcours — À Propos & Expérience",
         win3_title: "Windows Explorer — Dépôts, Infrastructure Cloud & Simulateurs Interactifs",
+        win4_title: "Propriétés Technologiques & Contact Direct",
         addr_root: "Ordinateur",
         addr_leaf: "Cloud AWS, Sécurité & VPS IA",
-        nav_about: "À Propos",
-        nav_exp: "Parcours",
-        nav_proj: "Projets & Labs",
-        nav_stack: "Compétences & Contact",
+        addr_path: "C:\\Utilisateurs\\PedroHipolito\\Portfolio",
+        lang_label: "🌐 Langue :",
+        tray_flyout_title: "🌐 Barre de Langue (Windows 7)",
+        nav_about: "01 / À Propos",
+        nav_exp: "02 / Parcours",
+        nav_proj: "03 / Projets & Labs",
+        nav_stack: "04 / Compétences",
         hero_badge: "BELO HORIZONTE, BRÉSIL • INFRASTRUCTURE IT, CLOUD AWS & SÉCURITÉ",
         hero_subtitle: "Infrastructure IT, Cloud AWS, Sécurité Réseau & VPS IA",
+        hero_org_edu: "Atex do Brasil • Licence en Informatique (Dom Helder Câmara)",
         hero_desc: "Exploitation et automatisation d'infrastructures IT chez Atex do Brasil : sauvegardes sur Amazon S3 (AWS), infrastructure IA dédiée par utilisateur sur VPS avec Docker, environnements PHP, sécurité réseau Kaspersky, pare-feu S4 et serveurs Windows Server (dont Windows Server 2008) & Linux.",
         btn_explore: "📂 Explorer les Projets & Démos (15)",
         gadget_title: "Moniteur de Ressources et Sécurité (Atex & Labs)",
+        gadget_status: "EN LIGNE",
+        gadget_b1_label: "Sauvegardes Amazon S3 & SLA Glacier",
+        gadget_b1_val: "100% Intègre (SHA-256)",
+        gadget_b2_label: "Infra VPS IA (Docker par Utilisateur)",
+        gadget_b2_val: "Conteneurs Isolés",
+        gadget_b3_label: "Kaspersky Endpoint + Pare-feu S4 + WinSrv 2008",
+        gadget_b3_val: "Protection Active",
         gadget_footer: "8 Simulateurs Web Interactifs hébergés",
+        gadget_btn: "Ouvrir Labs →",
         sec_about_num: "01 / À Propos de Moi & Spécialités",
         about_p1: "Étudiant en Informatique (Licence / Bachelor) à Dom Helder Câmara (Belo Horizonte, Brésil) et Stagiaire en Infrastructure IT & Cloud chez Atex do Brasil. Mon rôle consiste à garantir la sécurité, la disponibilité et l'automatisation des serveurs hybrides et du réseau d'entreprise.",
         about_p2: "Au quotidien chez Atex, j'administre les sauvegardes Cloud AWS (Amazon S3), l'infrastructure VPS dédiée par utilisateur pour l'IA sous Docker, les environnements PHP, ainsi que la sécurité réseau Kaspersky, le pare-feu S4 et le maintien de Windows Server 2008 / Active Directory.",
         about_p3: "Passionné par l'ingénierie matérielle et les systèmes, je conçois également des serveurs domestiques auto-hébergés (Homelab), des projets de robotique embarquée en C/C++ et des simulateurs de télémétrie.",
         lang_title: "🌐 Langues & Immersion",
+        lang_name_pt: "Portugais",
         lang_pt: "Langue maternelle",
+        lang_name_en: "Anglais",
         lang_en: "Courant / Avancé",
+        lang_name_fr: "Français",
         lang_fr: "En apprentissage (Lyon)",
         sec_exp_num: "02 / Expérience Professionnelle & Formation",
         exp_badge: "Expérience Actuelle",
@@ -852,15 +975,24 @@
         tab_app: "💻 Full-Stack & Robotique (2)",
         tab_labs: "⚡ Labs Hardware & Télémétrie (6)",
         tab_all: "📁 Tous (15)",
+        stack_c1_title: "☁️ Cloud, VPS & Sécurité",
+        stack_c2_title: "🐳 Conteneurs, Automatisation & Backend",
+        stack_c3_title: "🔧 Matériel, Réseaux & Embarqué",
         contact_title: "Restons en contact",
-        contact_desc: "Disponible pour échanger sur l'Infrastructure IT, le Cloud AWS, la Sécurité Réseau, les Homelabs ou lors d'événements tech au Brésil et à Lyon / Paris."
+        contact_desc: "Disponible pour échanger sur l'Infrastructure IT, le Cloud AWS, la Sécurité Réseau, les Homelabs ou lors d'événements tech au Brésil et à Lyon / Paris.",
+        btn_source: "📂 Code Source ↗",
+        btn_sim: "▶ Ouvrir Simulateur ↗"
       }
     };
 
     const projects = [
       {
         cat: "cloud",
-        title: "AWS S3 Enterprise Backup Suite",
+        title: {
+          pt: "AWS S3 Enterprise Backup Suite",
+          en: "AWS S3 Enterprise Backup Suite",
+          fr: "Suite de Sauvegarde d'Entreprise AWS S3"
+        },
         tags: ["AWS S3", "Python Boto3", "PowerShell", "Bash", "Glacier"],
         repo: "https://github.com/hipolitopeedro/aws-s3-enterprise-backup",
         demo: null,
@@ -872,7 +1004,11 @@
       },
       {
         cat: "cloud",
-        title: "OptiPlex Homelab Stack (NAS 3TB, Immich & PaperMC)",
+        title: {
+          pt: "OptiPlex Homelab Stack (NAS 3TB, Immich & PaperMC)",
+          en: "OptiPlex Homelab Stack (3TB NAS, Immich & PaperMC)",
+          fr: "OptiPlex Homelab Stack (NAS 3 To, Immich & PaperMC)"
+        },
         tags: ["Docker Compose", "Linux", "Samba SMB3", "Immich", "Pi-hole"],
         repo: "https://github.com/hipolitopeedro/optiplex-homelab-stack",
         demo: "https://hipolitopeedro.github.io/optiplex-homelab-stack/",
@@ -884,7 +1020,11 @@
       },
       {
         cat: "cloud",
-        title: "AWS Cloud Automation & Security Auditor (Boto3)",
+        title: {
+          pt: "AWS Cloud Automation & Security Auditor (Boto3)",
+          en: "AWS Cloud Automation & Security Auditor (Boto3)",
+          fr: "Automatisation Cloud AWS & Auditeur de Sécurité (Boto3)"
+        },
         tags: ["AWS", "Python", "Boto3", "FinOps", "IAM"],
         repo: "https://github.com/hipolitopeedro/aws-cloud-automation-boto3",
         demo: null,
@@ -896,7 +1036,11 @@
       },
       {
         cat: "cloud",
-        title: "AWS Multi-AZ VPC Infrastructure (IaC)",
+        title: {
+          pt: "AWS Multi-AZ VPC Infrastructure (IaC)",
+          en: "AWS Multi-AZ VPC Infrastructure (IaC)",
+          fr: "Infrastructure Réseau AWS VPC Multi-AZ (IaC)"
+        },
         tags: ["Terraform", "CloudFormation", "AWS VPC", "Networking"],
         repo: "https://github.com/hipolitopeedro/aws-vpc-infra-iac",
         demo: null,
@@ -908,7 +1052,11 @@
       },
       {
         cat: "cloud",
-        title: "Active Directory & Windows Server Toolkit",
+        title: {
+          pt: "Active Directory & Windows Server Toolkit",
+          en: "Active Directory & Windows Server Toolkit",
+          fr: "Boîte à Outils Active Directory & Windows Server"
+        },
         tags: ["PowerShell", "Active Directory", "Windows Server", "SysAdmin"],
         repo: "https://github.com/hipolitopeedro/ad-windows-sysadmin-toolkit",
         demo: null,
@@ -920,7 +1068,11 @@
       },
       {
         cat: "cloud",
-        title: "Linux & VPS Infrastructure Automation",
+        title: {
+          pt: "Linux & VPS Infrastructure Automation",
+          en: "Linux & VPS Infrastructure Automation",
+          fr: "Automatisation d'Infrastructure Linux & VPS"
+        },
         tags: ["Bash", "Linux VPS", "Systemd", "SHA-256"],
         repo: "https://github.com/hipolitopeedro/linux-infra-automation",
         demo: null,
@@ -932,7 +1084,11 @@
       },
       {
         cat: "cloud",
-        title: "Network Diagnostics & Firewall Port Auditing Suite",
+        title: {
+          pt: "Network Diagnostics & Firewall Port Auditing Suite",
+          en: "Network Diagnostics & Firewall Port Auditing Suite",
+          fr: "Suite de Diagnostic Réseau & Audit de Pare-feu"
+        },
         tags: ["Python", "PowerShell", "TCP/IP", "Firewall", "LDAP"],
         repo: "https://github.com/hipolitopeedro/network-diagnostics-suite",
         demo: null,
@@ -944,7 +1100,11 @@
       },
       {
         cat: "app",
-        title: "LuPA — Sistema de Gestão Financeira (Full-Stack MVP)",
+        title: {
+          pt: "LuPA — Sistema de Gestão Financeira (Full-Stack MVP)",
+          en: "LuPA — Financial Management System (Full-Stack MVP)",
+          fr: "LuPA — Système de Gestion Financière (MVP Full-Stack)"
+        },
         tags: ["React 19", "Flask", "Tailwind CSS", "Recharts", "jsPDF"],
         repo: "https://github.com/hipolitopeedro/gestor-lojaV1",
         demo: "https://hipolitopeedro.github.io/gestor-lojaV1/",
@@ -956,7 +1116,11 @@
       },
       {
         cat: "app",
-        title: "Arduino Robotics & Embedded Systems Labs",
+        title: {
+          pt: "Arduino Robotics & Embedded Systems Labs",
+          en: "Arduino Robotics & Embedded Systems Labs",
+          fr: "Laboratoire de Robotique Arduino & Systèmes Embarqués"
+        },
         tags: ["C/C++", "Arduino", "HC-SR04", "4-DOF Arm", "4WD Rover"],
         repo: "https://github.com/hipolitopeedro/arduino-robotics-embedded-labs",
         demo: "https://hipolitopeedro.github.io/arduino-robotics-embedded-labs/",
@@ -968,7 +1132,11 @@
       },
       {
         cat: "labs",
-        title: "AMD Overclocking, DDR4/DDR5 & WHEA Telemetry Toolkit",
+        title: {
+          pt: "AMD Overclocking, DDR4/DDR5 & WHEA Telemetry Toolkit",
+          en: "AMD Overclocking, DDR4/DDR5 & WHEA Telemetry Toolkit",
+          fr: "Toolkit d'Overclocking AMD, DDR4/DDR5 & Télémétrie WHEA"
+        },
         tags: ["Python", "PowerShell", "AMD Ryzen", "DDR4/DDR5", "WHEA"],
         repo: "https://github.com/hipolitopeedro/amd-overclock-telemetry-toolkit",
         demo: "https://hipolitopeedro.github.io/amd-overclock-telemetry-toolkit/",
@@ -980,7 +1148,11 @@
       },
       {
         cat: "labs",
-        title: "AMD Ryzen PBO2 & V/F Curve Simulation Engine",
+        title: {
+          pt: "AMD Ryzen PBO2 & V/F Curve Simulation Engine",
+          en: "AMD Ryzen PBO2 & V/F Curve Simulation Engine",
+          fr: "Simulateur de Courbe V/F & PBO2 AMD Ryzen"
+        },
         tags: ["Python", "Zen 3 / 4 / 5", "Curve Optimizer", "SMT Masks"],
         repo: "https://github.com/hipolitopeedro/pbo2-curve-optimizer-autotuner",
         demo: "https://hipolitopeedro.github.io/pbo2-curve-optimizer-autotuner/",
@@ -992,7 +1164,11 @@
       },
       {
         cat: "labs",
-        title: "Motherboard VRM Thermal Physics & LLC Simulator",
+        title: {
+          pt: "Motherboard VRM Thermal Physics & LLC Simulator",
+          en: "Motherboard VRM Thermal Physics & LLC Simulator",
+          fr: "Simulateur Thermique VRM & Load-Line Calibration (LLC)"
+        },
         tags: ["Python", "Power Electronics", "MOSFET", "LLC Vdroop"],
         repo: "https://github.com/hipolitopeedro/vrm-thermal-power-simulator",
         demo: "https://hipolitopeedro.github.io/vrm-thermal-power-simulator/",
@@ -1004,7 +1180,11 @@
       },
       {
         cat: "labs",
-        title: "PCIe 4.0/5.0, Smart Access Memory (ReBAR) & Frame-Time Profiler",
+        title: {
+          pt: "PCIe 4.0/5.0, Smart Access Memory (ReBAR) & Frame-Time Profiler",
+          en: "PCIe 4.0/5.0, Smart Access Memory (ReBAR) & Frame-Time Profiler",
+          fr: "Profileur PCIe 4.0/5.0, Resizable BAR & Frame-Time"
+        },
         tags: ["Python", "PowerShell", "PCIe", "ReBAR", "PresentMon"],
         repo: "https://github.com/hipolitopeedro/pcie-rebar-frametime-profiler",
         demo: "https://hipolitopeedro.github.io/pcie-rebar-frametime-profiler/",
@@ -1016,7 +1196,11 @@
       },
       {
         cat: "labs",
-        title: "Motorcycle Trackday Telemetry & Pit-Lane Setup Analyzer",
+        title: {
+          pt: "Motorcycle Trackday Telemetry & Pit-Lane Setup Analyzer",
+          en: "Motorcycle Trackday Telemetry & Pit-Lane Setup Analyzer",
+          fr: "Analyseur de Télémétrie Moto Trackday & Réglages Piste"
+        },
         tags: ["Python", "IMU/GPS Telemetry", "Thermodynamics", "Physics"],
         repo: "https://github.com/hipolitopeedro/moto-trackday-telemetry-analyzer",
         demo: "https://hipolitopeedro.github.io/moto-trackday-telemetry-analyzer/",
@@ -1028,7 +1212,11 @@
       },
       {
         cat: "labs",
-        title: "Turbocharged Engine Sizing & ECU Datalog Auditor",
+        title: {
+          pt: "Turbocharged Engine Sizing & ECU Datalog Auditor",
+          en: "Turbocharged Engine Sizing & ECU Datalog Auditor",
+          fr: "Dimensionnement Turbo & Auditeur de Datalogs ECU"
+        },
         tags: ["Python", "Thermodynamics", "ECU Datalog", "Airflow"],
         repo: "https://github.com/hipolitopeedro/turbo-engine-boost-toolkit",
         demo: "https://hipolitopeedro.github.io/turbo-engine-boost-toolkit/",
@@ -1045,14 +1233,30 @@
 
     function setLang(lang) {
       currentLang = lang;
-      ['pt', 'en', 'fr'].forEach(l => {
-        const btn = document.getElementById('lang-' + l);
-        btn.className = l === lang
-          ? 'aero-btn aero-btn-primary !px-2.5 !py-0.5 !text-xs'
-          : 'aero-btn !px-2.5 !py-0.5 !text-xs';
-      });
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+      document.title = i18n[lang].page_title;
 
-      document.getElementById('trayLangCode').textContent = lang === 'pt' ? 'PT-BR' : lang.toUpperCase();
+      ['pt', 'en', 'fr'].forEach(l => {
+        // Top Explorer Language Buttons
+        const btn = document.getElementById('lang-' + l);
+        if (btn) {
+          btn.className = l === lang
+            ? 'aero-btn aero-btn-primary !px-2.5 !py-0.5 !text-xs'
+            : 'aero-btn !px-2.5 !py-0.5 !text-xs';
+        }
+        // Bottom Taskbar System Tray Language Buttons
+        const trayBtn = document.getElementById('tray-lang-' + l);
+        if (trayBtn) {
+          trayBtn.className = l === lang
+            ? 'tray-lang-btn tray-lang-btn-active'
+            : 'tray-lang-btn';
+        }
+        // Flyout Checkmarks
+        const chk = document.getElementById('check-' + l);
+        if (chk) {
+          chk.classList.toggle('hidden', l !== lang);
+        }
+      });
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -1063,6 +1267,21 @@
 
       renderProjects();
     }
+
+    function toggleTrayFlyout(e) {
+      e.stopPropagation();
+      const flyout = document.getElementById('trayLangFlyout');
+      flyout.classList.toggle('hidden');
+    }
+
+    function closeTrayFlyout() {
+      const flyout = document.getElementById('trayLangFlyout');
+      if (flyout) flyout.classList.add('hidden');
+    }
+
+    document.addEventListener('click', () => {
+      closeTrayFlyout();
+    });
 
     function filterProjects(cat) {
       currentFilter = cat;
@@ -1081,15 +1300,19 @@
 
       const badgeLabel = {
         cloud: { pt: '☁️ CLOUD & INFRA', en: '☁️ CLOUD & INFRA', fr: '☁️ CLOUD & INFRA' },
-        app:   { pt: '💻 FULL-STACK & EMBEDDED', en: '💻 FULL-STACK & EMBEDDED', fr: '💻 FULL-STACK & EMBARQUÉ' },
-        labs:  { pt: '⚡ ENGINEERING LAB', en: '⚡ ENGINEERING LAB', fr: '⚡ LAB D\'INGÉNIERIE' }
+        app:   { pt: '💻 FULL-STACK & EMBARCADOS', en: '💻 FULL-STACK & EMBEDDED', fr: '💻 FULL-STACK & EMBARQUÉ' },
+        labs:  { pt: '⚡ LAB DE ENGENHARIA', en: '⚡ ENGINEERING LAB', fr: '⚡ LAB D\'INGÉNIERIE' }
       };
+
+      const sourceLabel = i18n[currentLang].btn_source;
+      const simLabel = i18n[currentLang].btn_sim;
 
       grid.innerHTML = list.map(p => {
         const tagsHtml = p.tags.map(t => `<span class="px-2 py-0.5 rounded bg-[#e8f4fd] border border-[#a9d1f5] text-[11px] font-semibold text-[#0d3c6e]">${t}</span>`).join('');
         const demoBtn = p.demo
-          ? `<a href="${p.demo}" target="_blank" class="aero-btn aero-btn-green !py-1 !px-2.5 !text-xs">▶ Abrir Simulador ↗</a>`
+          ? `<a href="${p.demo}" target="_blank" class="aero-btn aero-btn-green !py-1 !px-2.5 !text-xs">${simLabel}</a>`
           : '';
+        const titleText = typeof p.title === 'object' ? p.title[currentLang] : p.title;
 
         return `
           <article class="aero-card p-4 flex flex-col justify-between space-y-3">
@@ -1100,7 +1323,7 @@
                 </span>
                 ${p.demo ? '<span class="w-2.5 h-2.5 rounded-full bg-gradient-to-b from-lime-300 to-green-600 border border-white shadow" title="Live Interactive Simulator"></span>' : ''}
               </div>
-              <h3 class="text-sm font-bold text-[#0b2e59] leading-snug">${p.title}</h3>
+              <h3 class="text-sm font-bold text-[#0b2e59] leading-snug">${titleText}</h3>
               <p class="text-xs text-slate-700 leading-relaxed">${p.desc[currentLang]}</p>
             </div>
 
@@ -1108,7 +1331,7 @@
               <div class="flex flex-wrap gap-1">${tagsHtml}</div>
               <div class="flex items-center gap-2 pt-1">
                 <a href="${p.repo}" target="_blank" class="aero-btn !py-1 !px-2.5 !text-xs">
-                  📂 Código-Fonte ↗
+                  ${sourceLabel}
                 </a>
                 ${demoBtn}
               </div>
